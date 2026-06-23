@@ -9,6 +9,7 @@ export default defineConfig({
     environment: 'happy-dom',
     globals: true,
     css: true,
+    pool: 'forks',
     setupFiles: ['./src/test/setup.ts'],
   },
   optimizeDeps: {

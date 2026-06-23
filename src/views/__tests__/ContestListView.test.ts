@@ -173,7 +173,6 @@ describe('ContestListView', () => {
     it('Rated比赛显示Rated标签', async () => {
       const wrapper = mountContestListView()
       await flushPromises()
-      const ratedTags = wrapper.findAll('.contest-tags')
       // 应该有 Rated 标签出现在前3场和最后一场比赛中
       expect(wrapper.html()).toContain('Rated')
     })

@@ -262,7 +262,7 @@
     },
     {
       "id": 1018,
-      "title": "背包问题",
+      "title": "0-1 背包问题",
       "difficulty": "improve",
       "tags": [
         "DP"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import {
   NTabs,
@@ -10,7 +10,7 @@ import {
   NEmpty,
   useMessage,
 } from 'naive-ui'
-import type { Contest, ContestStatus } from '../types'
+import type { Contest } from '../types'
 import { fetchContests } from '../api/contests'
 import CountdownTimer from '../components/CountdownTimer.vue'
 import StatusTag from '../components/StatusTag.vue'

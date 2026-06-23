@@ -325,10 +325,6 @@ const submissionColumns: DataTableColumns<Submission> = [
 // ==================== h 函数 ====================
 import { h } from 'vue'
 
-function goToProblem(problemId: number): void {
-  router.push(`/problem/${problemId}`)
-}
-
 onMounted(loadDetail)
 </script>
 
