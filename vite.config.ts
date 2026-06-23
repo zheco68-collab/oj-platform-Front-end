@@ -11,4 +11,18 @@ export default defineConfig({
     css: true,
     setupFiles: ['./src/test/setup.ts'],
   },
+  optimizeDeps: {
+    include: [
+      'codemirror',
+      '@codemirror/state',
+      '@codemirror/view',
+      '@codemirror/language',
+      '@codemirror/commands',
+      '@codemirror/lang-cpp',
+      '@codemirror/lang-python',
+      '@codemirror/lang-java',
+      '@codemirror/lang-go',
+      '@codemirror/theme-one-dark',
+    ],
+  },
 })
