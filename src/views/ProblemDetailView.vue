@@ -218,72 +218,76 @@ onUnmounted(() => {
 
         <NDivider />
 
-        <!-- 算法标签 -->
+        <!-- 提交代码 -->
         <section class="content-section">
-          <h2 class="section-title">算法标签</h2>
-          <NSpace wrap>
-            <NTag
-              v-for="tag in problemStore.currentProblem.tags"
-              :key="tag"
-              type="info"
-              size="small"
-              style="cursor: pointer"
-              @click="router.push({ name: 'problem-list', query: { tags: tag } })"
-            >
-              {{ tag }}
-            </NTag>
-          </NSpace>
+          <h2 class="section-title">提交代码</h2>
+          <div class="submit-area">
+            <NSelect
+              v-model:value="selectedLanguage"
+              :options="languageOptions"
+              placeholder="选择语言"
+              class="submit-language"
+            />
+
+            <div class="code-editor-wrap">
+              <CodeEditor v-model="code" :language="selectedLanguage" />
+            </div>
+
+            <NTooltip :disabled="auth.isLoggedIn">
+              <template #trigger>
+                <NButton
+                  type="primary"
+                  :disabled="!auth.isLoggedIn || submitStore.isSubmitting"
+                  :loading="submitStore.isSubmitting"
+                  class="submit-btn"
+                  size="large"
+                  @click="handleSubmit"
+                >
+                  {{ submitStore.isSubmitting ? '提交中...' : '提交代码' }}
+                </NButton>
+              </template>
+              <span v-if="!auth.isLoggedIn">请先登录后提交</span>
+            </NTooltip>
+
+            <!-- 提交错误 -->
+            <div v-if="submitStore.submitError" class="submit-error">
+              {{ submitStore.submitError }}
+            </div>
+
+            <!-- 判题状态卡片 -->
+            <JudgeStatusCard
+              v-if="submitStore.currentSubmission"
+              :status="submitStore.currentSubmission.status"
+              :time="submitStore.currentSubmission.time"
+              :memory="submitStore.currentSubmission.memory"
+              :loading="submitStore.isPolling"
+              :error="submitStore.submitError"
+            />
+          </div>
         </section>
       </NCard>
     </div>
 
-    <!-- 右侧：提交区 -->
+    <!-- 右侧：算法标签 -->
     <div class="right-panel">
-      <NCard title="提交代码" size="small">
-        <div class="submit-area">
-          <NSelect
-            v-model:value="selectedLanguage"
-            :options="languageOptions"
-            placeholder="选择语言"
-            class="submit-language"
-          />
-
-          <div class="code-editor-wrap">
-            <CodeEditor v-model="code" :language="selectedLanguage" />
-          </div>
-
-          <NTooltip :disabled="auth.isLoggedIn">
-            <template #trigger>
-              <NButton
-                type="primary"
-                block
-                :disabled="!auth.isLoggedIn || submitStore.isSubmitting"
-                :loading="submitStore.isSubmitting"
-                class="submit-btn"
-                size="large"
-                @click="handleSubmit"
-              >
-                {{ submitStore.isSubmitting ? '提交中...' : '提交代码' }}
-              </NButton>
-            </template>
-            <span v-if="!auth.isLoggedIn">请先登录后提交</span>
-          </NTooltip>
-
-          <!-- 提交错误 -->
-          <div v-if="submitStore.submitError" class="submit-error">
-            {{ submitStore.submitError }}
-          </div>
-
-          <!-- 判题状态卡片 -->
-          <JudgeStatusCard
-            v-if="submitStore.currentSubmission"
-            :status="submitStore.currentSubmission.status"
-            :time="submitStore.currentSubmission.time"
-            :memory="submitStore.currentSubmission.memory"
-            :loading="submitStore.isPolling"
-            :error="submitStore.submitError"
-          />
-        </div>
+      <NCard title="算法标签" size="small">
+        <NSpace wrap>
+          <NTag
+            v-for="tag in problemStore.currentProblem?.tags"
+            :key="tag"
+            type="info"
+            size="small"
+            style="cursor: pointer"
+            @click="router.push({ name: 'problem-list', query: { tags: tag } })"
+          >
+            {{ tag }}
+          </NTag>
+        </NSpace>
+        <NEmpty
+          v-if="!problemStore.currentProblem?.tags?.length"
+          description="暂无标签"
+          size="small"
+        />
       </NCard>
     </div>
 
