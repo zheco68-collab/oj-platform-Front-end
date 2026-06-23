@@ -7,7 +7,7 @@ import { setActivePinia } from 'pinia'
 import ProblemDetailView from '../ProblemDetailView.vue'
 import { createTestPinia, createTestRouter, mountWithPlugins } from '../../test/helpers'
 
-// Mock API
+// Mock 题目 API
 vi.mock('../../api/problems', () => ({
   fetchProblems: vi.fn(),
   fetchProblemDetail: vi.fn((id: number) => {
@@ -40,6 +40,42 @@ vi.mock('../../api/problems', () => ({
   }),
 }))
 
+// Mock 提交 API
+let mockSubmissionCounter = 0
+vi.mock('../../api/submissions', () => ({
+  submitCode: vi.fn(async (_problemId: number, _code: string, language: string) => {
+    mockSubmissionCounter++
+    return {
+      code: 200,
+      message: 'ok',
+      data: {
+        id: `SUB-${String(mockSubmissionCounter).padStart(3, '0')}`,
+        problemId: _problemId,
+        language,
+        code: _code,
+        status: 'PENDING',
+        createdAt: new Date().toISOString(),
+      },
+    }
+  }),
+  pollSubmissionStatus: vi.fn(async (submissionId: string) => {
+    return {
+      code: 200,
+      message: 'ok',
+      data: {
+        id: submissionId,
+        problemId: 1001,
+        language: 'C++',
+        code: 'int main(){}',
+        status: 'AC',
+        time: 42,
+        memory: 10240,
+        createdAt: new Date().toISOString(),
+      },
+    }
+  }),
+}))
+
 async function mountDetailView(id: string) {
   const pinia = createTestPinia()
   setActivePinia(pinia)
@@ -57,6 +93,7 @@ async function mountDetailView(id: string) {
 describe('ProblemDetailView', () => {
   beforeEach(() => {
     setActivePinia(createTestPinia())
+    mockSubmissionCounter = 0
   })
 
   it('渲染加载状态', async () => {
@@ -122,18 +159,20 @@ describe('ProblemDetailView', () => {
     expect(wrapper.html()).toContain('算法标签')
   })
 
-  it('渲染提交区', async () => {
+  it('渲染提交区包含标题', async () => {
     const wrapper = await mountDetailView('1001')
     await flushPromises()
     await flushPromises()
     expect(wrapper.html()).toContain('提交代码')
   })
 
-  it('提交按钮存在', async () => {
+  it('渲染代码编辑器和语言选择器', async () => {
     const wrapper = await mountDetailView('1001')
     await flushPromises()
     await flushPromises()
-    // 提交区文本中包含"提交代码"
+    // 代码编辑器 textarea 存在
+    expect(wrapper.find('textarea').exists()).toBe(true)
+    // 提交按钮存在
     const text = wrapper.text()
     expect(text).toContain('提交代码')
   })
@@ -152,8 +191,16 @@ describe('ProblemDetailView', () => {
     await flushPromises()
     await flushPromises()
     await flushPromises()
-    // 应显示"题目未找到"或"返回题库"
     const text = wrapper.text()
     expect(text).toContain('题目未找到')
+  })
+
+  it('提交记录 Tab 存在', async () => {
+    const wrapper = await mountDetailView('1001')
+    await flushPromises()
+    await flushPromises()
+    // Naive UI NTabs 默认只渲染活动 Tab 的内容，但 Tab 头部的文本始终可见
+    const text = wrapper.text()
+    expect(text).toContain('提交记录')
   })
 })

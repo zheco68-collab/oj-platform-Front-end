@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, watch, ref } from 'vue'
+import { computed, onMounted, watch, ref, onUnmounted } from 'vue'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
 import {
   NCard,
@@ -18,18 +18,22 @@ import {
 import { CopyOutline, ArrowBackOutline } from '@vicons/ionicons5'
 import DifficultyTag from '../components/DifficultyTag.vue'
 import MdRenderer from '../components/MdRenderer.vue'
+import CodeEditor from '../components/CodeEditor.vue'
+import JudgeStatusCard from '../components/JudgeStatusCard.vue'
 import { useProblemStore } from '../stores/problem'
 import { useAuthStore } from '../stores/auth'
-import { formatTimeLimit, formatMemoryLimit } from '../utils'
+import { useSubmitStore } from '../stores/submit'
+import { formatTimeLimit, formatMemoryLimit, formatDateTime } from '../utils'
 
 const route = useRoute()
 const router = useRouter()
-const store = useProblemStore()
+const problemStore = useProblemStore()
 const auth = useAuthStore()
+const submitStore = useSubmitStore()
 
 const problemId = computed(() => Number(route.params.id))
 
-// 提交区状态（P3 替换为完整功能）
+// ==================== 提交区状态 ====================
 const selectedLanguage = ref('C++')
 const code = ref('')
 
@@ -43,27 +47,43 @@ const languageOptions = [
   { label: 'Go', value: 'Go' },
 ]
 
-// 复制到剪贴板
+// 当前题目的提交历史
+const problemSubmissions = computed(() =>
+  submitStore.getHistoryForProblem(problemId.value),
+)
+
+// ==================== 提交方法 ====================
+async function handleSubmit(): Promise<void> {
+  if (!code.value.trim() || !auth.isLoggedIn) return
+  await submitStore.submit(problemId.value, code.value, selectedLanguage.value)
+}
+
+// ==================== 复制到剪贴板 ====================
 async function copyToClipboard(text: string): Promise<void> {
   try {
     await navigator.clipboard.writeText(text)
   } catch {
-    // fallback: 如果 clipboard API 不可用，静默失败
+    // fallback: 静默失败
   }
 }
 
-// 加载题目详情
+// ==================== 生命周期 ====================
 onMounted(() => {
   if (problemId.value) {
-    store.fetchProblemDetail(problemId.value)
+    problemStore.fetchProblemDetail(problemId.value)
   }
 })
 
-// 监听路由参数变化（跨题目导航）
 watch(problemId, (newId) => {
   if (newId) {
-    store.fetchProblemDetail(newId)
+    problemStore.fetchProblemDetail(newId)
   }
+})
+
+onUnmounted(() => {
+  // 离开页面时不停止轮询（用户可能快速返回）
+  // 但如果离开题目详情页，清理旧提交错误信息
+  submitStore.submitError = null
 })
 </script>
 
@@ -72,7 +92,7 @@ watch(problemId, (newId) => {
     <!-- 左侧：题目内容 -->
     <div class="left-panel">
       <!-- 加载状态 -->
-      <NCard v-if="store.detailLoading">
+      <NCard v-if="problemStore.detailLoading">
         <div class="loading-wrap">
           <NSpin size="large" />
           <p class="loading-text">加载中...</p>
@@ -80,7 +100,7 @@ watch(problemId, (newId) => {
       </NCard>
 
       <!-- 未找到 -->
-      <NCard v-else-if="store.detailError || !store.currentProblem">
+      <NCard v-else-if="problemStore.detailError || !problemStore.currentProblem">
         <NEmpty description="题目未找到">
           <template #extra>
             <NButton type="primary" @click="router.push({ name: 'problem-list' })">
@@ -98,25 +118,25 @@ watch(problemId, (newId) => {
         <!-- 题目头部 -->
         <div class="problem-header">
           <div class="header-main">
-            <span class="problem-id">P{{ store.currentProblem.id }}</span>
-            <h1 class="problem-title">{{ store.currentProblem.title }}</h1>
+            <span class="problem-id">P{{ problemStore.currentProblem.id }}</span>
+            <h1 class="problem-title">{{ problemStore.currentProblem.title }}</h1>
           </div>
-          <DifficultyTag :difficulty="store.currentProblem.difficulty" />
+          <DifficultyTag :difficulty="problemStore.currentProblem.difficulty" />
         </div>
 
         <!-- 元信息 -->
         <NSpace class="problem-meta" :size="16">
           <span>
-            <strong>时间限制：</strong>{{ formatTimeLimit(store.currentProblem.timeLimit) }}
+            <strong>时间限制：</strong>{{ formatTimeLimit(problemStore.currentProblem.timeLimit) }}
           </span>
           <span>
-            <strong>内存限制：</strong>{{ formatMemoryLimit(store.currentProblem.memoryLimit) }}
+            <strong>内存限制：</strong>{{ formatMemoryLimit(problemStore.currentProblem.memoryLimit) }}
           </span>
-          <span><strong>来源：</strong>{{ store.currentProblem.source }}</span>
+          <span><strong>来源：</strong>{{ problemStore.currentProblem.source }}</span>
           <span>
             <strong>通过率：</strong>
-            {{ store.currentProblem.submissionCount > 0
-              ? ((store.currentProblem.acceptedCount / store.currentProblem.submissionCount) * 100).toFixed(1) + '%'
+            {{ problemStore.currentProblem.submissionCount > 0
+              ? ((problemStore.currentProblem.acceptedCount / problemStore.currentProblem.submissionCount) * 100).toFixed(1) + '%'
               : '0%'
             }}
           </span>
@@ -125,37 +145,37 @@ watch(problemId, (newId) => {
         <NDivider />
 
         <!-- 题目描述 -->
-        <section v-if="store.currentProblem.description" class="content-section">
+        <section v-if="problemStore.currentProblem.description" class="content-section">
           <h2 class="section-title">题目描述</h2>
-          <MdRenderer :content="store.currentProblem.description" />
+          <MdRenderer :content="problemStore.currentProblem.description" />
         </section>
 
         <NDivider />
 
         <!-- 输入格式 -->
-        <section v-if="store.currentProblem.inputFormat" class="content-section">
+        <section v-if="problemStore.currentProblem.inputFormat" class="content-section">
           <h2 class="section-title">输入格式</h2>
-          <MdRenderer :content="store.currentProblem.inputFormat" />
+          <MdRenderer :content="problemStore.currentProblem.inputFormat" />
         </section>
 
         <NDivider />
 
         <!-- 输出格式 -->
-        <section v-if="store.currentProblem.outputFormat" class="content-section">
+        <section v-if="problemStore.currentProblem.outputFormat" class="content-section">
           <h2 class="section-title">输出格式</h2>
-          <MdRenderer :content="store.currentProblem.outputFormat" />
+          <MdRenderer :content="problemStore.currentProblem.outputFormat" />
         </section>
 
         <NDivider />
 
         <!-- 样例 -->
         <section
-          v-if="store.currentProblem.samples && store.currentProblem.samples.length > 0"
+          v-if="problemStore.currentProblem.samples && problemStore.currentProblem.samples.length > 0"
           class="content-section"
         >
           <h2 class="section-title">样例</h2>
           <div
-            v-for="(sample, idx) in store.currentProblem.samples"
+            v-for="(sample, idx) in problemStore.currentProblem.samples"
             :key="idx"
             class="sample-block"
           >
@@ -191,9 +211,9 @@ watch(problemId, (newId) => {
         <NDivider />
 
         <!-- 提示 -->
-        <section v-if="store.currentProblem.hint" class="content-section">
+        <section v-if="problemStore.currentProblem.hint" class="content-section">
           <h2 class="section-title">提示</h2>
-          <MdRenderer :content="store.currentProblem.hint" />
+          <MdRenderer :content="problemStore.currentProblem.hint" />
         </section>
 
         <NDivider />
@@ -203,7 +223,7 @@ watch(problemId, (newId) => {
           <h2 class="section-title">算法标签</h2>
           <NSpace wrap>
             <NTag
-              v-for="tag in store.currentProblem.tags"
+              v-for="tag in problemStore.currentProblem.tags"
               :key="tag"
               type="info"
               size="small"
@@ -229,13 +249,7 @@ watch(problemId, (newId) => {
           />
 
           <div class="code-editor-wrap">
-            <textarea
-              v-model="code"
-              class="code-textarea"
-              placeholder="在此输入代码..."
-              rows="15"
-              spellcheck="false"
-            />
+            <CodeEditor v-model="code" :language="selectedLanguage" />
           </div>
 
           <NTooltip :disabled="auth.isLoggedIn">
@@ -243,15 +257,32 @@ watch(problemId, (newId) => {
               <NButton
                 type="primary"
                 block
-                :disabled="!auth.isLoggedIn"
+                :disabled="!auth.isLoggedIn || submitStore.isSubmitting"
+                :loading="submitStore.isSubmitting"
                 class="submit-btn"
                 size="large"
+                @click="handleSubmit"
               >
-                提交代码
+                {{ submitStore.isSubmitting ? '提交中...' : '提交代码' }}
               </NButton>
             </template>
             <span v-if="!auth.isLoggedIn">请先登录后提交</span>
           </NTooltip>
+
+          <!-- 提交错误 -->
+          <div v-if="submitStore.submitError" class="submit-error">
+            {{ submitStore.submitError }}
+          </div>
+
+          <!-- 判题状态卡片 -->
+          <JudgeStatusCard
+            v-if="submitStore.currentSubmission"
+            :status="submitStore.currentSubmission.status"
+            :time="submitStore.currentSubmission.time"
+            :memory="submitStore.currentSubmission.memory"
+            :loading="submitStore.isPolling"
+            :error="submitStore.submitError"
+          />
         </div>
       </NCard>
     </div>
@@ -269,7 +300,32 @@ watch(problemId, (newId) => {
           </NTabPane>
           <NTabPane name="submissions" tab="提交记录">
             <div class="tab-content">
-              <NEmpty description="暂无提交记录" />
+              <NEmpty
+                v-if="problemSubmissions.length === 0"
+                description="暂无提交记录"
+              />
+              <div v-else class="submission-history">
+                <div
+                  v-for="sub in problemSubmissions"
+                  :key="sub.id"
+                  class="submission-item"
+                >
+                  <div class="submission-item-left">
+                    <span class="submission-id">{{ sub.id }}</span>
+                    <span class="submission-lang">{{ sub.language }}</span>
+                    <span
+                      class="submission-status"
+                      :style="{ color: submitStore.currentSubmission?.id === sub.id
+                        ? 'var(--color-primary)' : '' }"
+                    >
+                      {{ sub.status }}
+                    </span>
+                  </div>
+                  <div class="submission-item-right">
+                    <span class="submission-time">{{ formatDateTime(sub.createdAt) }}</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </NTabPane>
         </NTabs>
@@ -418,29 +474,70 @@ watch(problemId, (newId) => {
   margin-bottom: var(--gap-sm);
 }
 
-.code-textarea {
-  width: 100%;
-  padding: var(--gap-sm);
-  border: 1px solid #e1e4e8;
-  border-radius: var(--border-radius);
-  font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
-  font-size: 0.875rem;
-  line-height: 1.6;
-  tab-size: 4;
-  resize: vertical;
-  background: #fafbfc;
-  color: var(--text-primary);
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.code-textarea:focus {
-  border-color: var(--color-primary);
-  background: var(--bg-card);
-}
-
 .submit-btn {
   margin-top: 0;
+}
+
+.submit-error {
+  margin-top: var(--gap-sm);
+  font-size: 0.8125rem;
+  color: var(--color-danger);
+}
+
+/* 提交历史 */
+.submission-history {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+}
+
+.submission-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--gap-xs) var(--gap-sm);
+  border: 1px solid #eee;
+  border-radius: var(--border-radius);
+  font-size: 0.8125rem;
+  background: #fafbfc;
+}
+
+.submission-item:hover {
+  background: #f0f7ff;
+}
+
+.submission-item-left {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+}
+
+.submission-id {
+  font-family: monospace;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+.submission-lang {
+  color: var(--text-secondary);
+  padding: 0 4px;
+  background: #eee;
+  border-radius: 3px;
+  font-size: 0.75rem;
+}
+
+.submission-status {
+  font-weight: 600;
+  font-family: monospace;
+}
+
+.submission-item-right {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+.submission-time {
+  font-variant-numeric: tabular-nums;
 }
 
 /* Tab 内容 */
