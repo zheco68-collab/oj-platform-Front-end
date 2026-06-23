@@ -1,19 +1,28 @@
 <script setup lang="ts">
-import { NLayout, NLayoutContent } from 'naive-ui'
+import { computed } from 'vue'
+import { NLayout, NLayoutContent, NMessageProvider, NConfigProvider, darkTheme } from 'naive-ui'
 import GlobalHeader from './components/GlobalHeader.vue'
 import GlobalFooter from './components/GlobalFooter.vue'
+import { useThemeStore } from './stores/theme'
+
+const themeStore = useThemeStore()
+const naiveTheme = computed(() => themeStore.mode === 'dark' ? darkTheme : undefined)
 </script>
 
 <template>
-  <NLayout class="app-layout">
-    <GlobalHeader />
-    <NLayoutContent class="app-content">
-      <div class="container">
-        <router-view />
-      </div>
-    </NLayoutContent>
-    <GlobalFooter />
-  </NLayout>
+  <NConfigProvider :theme="naiveTheme">
+    <NMessageProvider>
+      <NLayout class="app-layout">
+        <GlobalHeader />
+        <NLayoutContent class="app-content">
+          <div class="container">
+            <router-view />
+          </div>
+        </NLayoutContent>
+        <GlobalFooter />
+      </NLayout>
+    </NMessageProvider>
+  </NConfigProvider>
 </template>
 
 <style>

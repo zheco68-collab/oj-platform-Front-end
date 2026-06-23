@@ -1,6 +1,5 @@
 import type { User, UserProfile } from '../../types'
+import usersData from './data/users.json'
 
-// TODO: 填充 Mock 数据
-export const mockUser: User | null = null
-
-export const mockUserProfile: UserProfile | null = null
+export const mockUser: User | null = usersData.user as User | null
+export const mockUserProfile: UserProfile | null = usersData.userProfile as UserProfile | null

@@ -29,6 +29,12 @@
   --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
   --shadow-header: 0 1px 4px rgba(0, 0, 0, 0.05);
 
+  /* 样例区域 */
+  --sample-bg: #fafbfc;
+  --sample-label-bg: #f6f8fa;
+  --sample-border: #e1e4e8;
+  --sample-text: inherit;
+
   /* 间距 */
   --gap-xs: 4px;
   --gap-sm: 8px;
@@ -85,3 +91,28 @@ a:hover {
 
 /* ==================== Naive UI 全局覆盖（占位） ==================== */
 /* 后续按需在此覆盖 Naive UI 默认样式 */
+
+/* ==================== 深色模式 ==================== */
+html.dark {
+  --bg-page: #1a1a2e;
+  --bg-card: #16213e;
+  --bg-header: #16213e;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666;
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-header: 0 1px 4px rgba(0, 0, 0, 0.2);
+  color-scheme: dark;
+}
+
+html.dark {
+  --sample-bg: #1e293b;
+  --sample-label-bg: #1a2332;
+  --sample-border: #334155;
+  --sample-text: #e2e8f0;
+}
+
+html.dark body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+}

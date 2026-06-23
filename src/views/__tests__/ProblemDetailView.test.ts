@@ -170,8 +170,8 @@ describe('ProblemDetailView', () => {
     const wrapper = await mountDetailView('1001')
     await flushPromises()
     await flushPromises()
-    // 代码编辑器 textarea 存在
-    expect(wrapper.find('textarea').exists()).toBe(true)
+    // CodeMirror 编辑器存在
+    expect(wrapper.find('.cm-editor-wrap').exists()).toBe(true)
     // 提交按钮存在
     const text = wrapper.text()
     expect(text).toContain('提交代码')

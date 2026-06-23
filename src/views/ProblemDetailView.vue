@@ -218,72 +218,76 @@ onUnmounted(() => {
 
         <NDivider />
 
-        <!-- 算法标签 -->
+        <!-- 提交代码 -->
         <section class="content-section">
-          <h2 class="section-title">算法标签</h2>
-          <NSpace wrap>
-            <NTag
-              v-for="tag in problemStore.currentProblem.tags"
-              :key="tag"
-              type="info"
-              size="small"
-              style="cursor: pointer"
-              @click="router.push({ name: 'problem-list', query: { tags: tag } })"
-            >
-              {{ tag }}
-            </NTag>
-          </NSpace>
+          <h2 class="section-title">提交代码</h2>
+          <div class="submit-area">
+            <NSelect
+              v-model:value="selectedLanguage"
+              :options="languageOptions"
+              placeholder="选择语言"
+              class="submit-language"
+            />
+
+            <div class="code-editor-wrap">
+              <CodeEditor v-model="code" :language="selectedLanguage" />
+            </div>
+
+            <NTooltip :disabled="auth.isLoggedIn">
+              <template #trigger>
+                <NButton
+                  type="primary"
+                  :disabled="!auth.isLoggedIn || submitStore.isSubmitting"
+                  :loading="submitStore.isSubmitting"
+                  class="submit-btn"
+                  size="large"
+                  @click="handleSubmit"
+                >
+                  {{ submitStore.isSubmitting ? '提交中...' : '提交代码' }}
+                </NButton>
+              </template>
+              <span v-if="!auth.isLoggedIn">请先登录后提交</span>
+            </NTooltip>
+
+            <!-- 提交错误 -->
+            <div v-if="submitStore.submitError" class="submit-error">
+              {{ submitStore.submitError }}
+            </div>
+
+            <!-- 判题状态卡片 -->
+            <JudgeStatusCard
+              v-if="submitStore.currentSubmission"
+              :status="submitStore.currentSubmission.status"
+              :time="submitStore.currentSubmission.time"
+              :memory="submitStore.currentSubmission.memory"
+              :loading="submitStore.isPolling"
+              :error="submitStore.submitError"
+            />
+          </div>
         </section>
       </NCard>
     </div>
 
-    <!-- 右侧：提交区 -->
+    <!-- 右侧：算法标签 -->
     <div class="right-panel">
-      <NCard title="提交代码" size="small">
-        <div class="submit-area">
-          <NSelect
-            v-model:value="selectedLanguage"
-            :options="languageOptions"
-            placeholder="选择语言"
-            class="submit-language"
-          />
-
-          <div class="code-editor-wrap">
-            <CodeEditor v-model="code" :language="selectedLanguage" />
-          </div>
-
-          <NTooltip :disabled="auth.isLoggedIn">
-            <template #trigger>
-              <NButton
-                type="primary"
-                block
-                :disabled="!auth.isLoggedIn || submitStore.isSubmitting"
-                :loading="submitStore.isSubmitting"
-                class="submit-btn"
-                size="large"
-                @click="handleSubmit"
-              >
-                {{ submitStore.isSubmitting ? '提交中...' : '提交代码' }}
-              </NButton>
-            </template>
-            <span v-if="!auth.isLoggedIn">请先登录后提交</span>
-          </NTooltip>
-
-          <!-- 提交错误 -->
-          <div v-if="submitStore.submitError" class="submit-error">
-            {{ submitStore.submitError }}
-          </div>
-
-          <!-- 判题状态卡片 -->
-          <JudgeStatusCard
-            v-if="submitStore.currentSubmission"
-            :status="submitStore.currentSubmission.status"
-            :time="submitStore.currentSubmission.time"
-            :memory="submitStore.currentSubmission.memory"
-            :loading="submitStore.isPolling"
-            :error="submitStore.submitError"
-          />
-        </div>
+      <NCard title="算法标签" size="small">
+        <NSpace wrap>
+          <NTag
+            v-for="tag in problemStore.currentProblem?.tags"
+            :key="tag"
+            type="info"
+            size="small"
+            style="cursor: pointer"
+            @click="router.push({ name: 'problem-list', query: { tags: tag } })"
+          >
+            {{ tag }}
+          </NTag>
+        </NSpace>
+        <NEmpty
+          v-if="!problemStore.currentProblem?.tags?.length"
+          description="暂无标签"
+          size="small"
+        />
       </NCard>
     </div>
 
@@ -433,8 +437,8 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: var(--gap-xs) var(--gap-sm);
-  background: #f6f8fa;
-  border: 1px solid #e1e4e8;
+  background: var(--sample-label-bg, #f6f8fa);
+  border: 1px solid var(--sample-border, #e1e4e8);
   border-bottom: none;
   border-radius: var(--border-radius) var(--border-radius) 0 0;
   font-size: 0.875rem;
@@ -448,8 +452,8 @@ onUnmounted(() => {
 .sample-content {
   margin: 0;
   padding: var(--gap-sm) var(--gap-md);
-  background: #fafbfc;
-  border: 1px solid #e1e4e8;
+  background: var(--sample-bg, #fafbfc);
+  border: 1px solid var(--sample-border, #e1e4e8);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
   font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
   font-size: 0.875rem;
@@ -458,6 +462,7 @@ onUnmounted(() => {
   word-break: break-all;
   max-height: 300px;
   overflow-y: auto;
+  color: var(--sample-text, inherit);
 }
 
 /* 提交区 */
@@ -496,14 +501,14 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: var(--gap-xs) var(--gap-sm);
-  border: 1px solid #eee;
+  border: 1px solid var(--sample-border, #eee);
   border-radius: var(--border-radius);
   font-size: 0.8125rem;
-  background: #fafbfc;
+  background: var(--sample-bg, #fafbfc);
 }
 
 .submission-item:hover {
-  background: #f0f7ff;
+  background: var(--sample-label-bg, #f0f7ff);
 }
 
 .submission-item-left {
@@ -521,7 +526,7 @@ onUnmounted(() => {
 .submission-lang {
   color: var(--text-secondary);
   padding: 0 4px;
-  background: #eee;
+  background: var(--sample-label-bg, #eee);
   border-radius: 3px;
   font-size: 0.75rem;
 }

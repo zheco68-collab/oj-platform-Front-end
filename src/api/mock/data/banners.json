@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "imageUrl": "https://picsum.photos/seed/oj1/1200/400",
+    "linkUrl": "/contest/1",
+    "title": "2026 年度夏季算法竞赛火热报名中"
+  },
+  {
+    "id": 2,
+    "imageUrl": "https://picsum.photos/seed/oj2/1200/400",
+    "linkUrl": "/problem/1001",
+    "title": "新手必刷：A + B 问题入门指南"
+  },
+  {
+    "id": 3,
+    "imageUrl": "https://picsum.photos/seed/oj3/1200/400",
+    "linkUrl": "/contest/2",
+    "title": "周赛 #56 即将开始，快来参加吧！"
+  },
+  {
+    "id": 4,
+    "imageUrl": "https://picsum.photos/seed/oj4/1200/400",
+    "linkUrl": "/problem/1012",
+    "title": "动态规划专题：从入门到精通"
+  }
+]
