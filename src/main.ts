@@ -4,6 +4,8 @@ import naive from 'naive-ui'
 import router from './router'
 import App from './App.vue'
 import './assets/global.css'
+import 'katex/dist/katex.min.css'
+import 'highlight.js/styles/github.css'
 
 const app = createApp(App)
 
