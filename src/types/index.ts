@@ -227,6 +227,24 @@ export interface Banner {
   title: string
 }
 
+// ==================== 管理员 ====================
+
+export interface AdminOverview {
+  label: string
+  value: number
+  icon: string
+  color: string
+}
+
+export interface AdminEntry {
+  key: string
+  title: string
+  description: string
+  icon: string
+  color: string
+  actions: string[]
+}
+
 // ==================== API 通用 ====================
 
 export interface PaginatedResponse<T> {

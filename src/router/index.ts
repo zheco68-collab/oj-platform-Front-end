@@ -44,6 +44,16 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../views/ContestDetailView.vue'),
   },
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/LoginView.vue'),
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('../views/RegisterView.vue'),
+  },
+  {
     path: '/user/:id(\\d+)',
     name: 'user-profile',
     component: () => import('../views/UserProfileView.vue'),

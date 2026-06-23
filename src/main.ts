@@ -9,8 +9,14 @@ import 'highlight.js/styles/github.css'
 
 const app = createApp(App)
 
-app.use(createPinia())
+const pinia = createPinia()
+app.use(pinia)
 app.use(router)
 app.use(naive)
+
+// 从 localStorage 恢复登录态
+import { useAuthStore } from './stores/auth'
+const auth = useAuthStore()
+auth.initFromStorage()
 
 app.mount('#app')

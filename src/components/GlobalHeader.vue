@@ -126,8 +126,8 @@ function handleNotification(): void {
           </NDropdown>
         </template>
         <template v-else>
-          <NButton text>登录</NButton>
-          <NButton type="primary" size="small">注册</NButton>
+          <NButton text @click="router.push('/login')">登录</NButton>
+          <NButton type="primary" size="small" @click="router.push('/register')">注册</NButton>
         </template>
       </div>
     </div>

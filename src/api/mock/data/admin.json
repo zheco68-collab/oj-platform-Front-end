@@ -1,0 +1,42 @@
+{
+  "overview": [
+    { "label": "题目总数", "value": 128, "icon": "DocumentTextOutline", "color": "#3498db" },
+    { "label": "比赛总数", "value": 36, "icon": "TrophyOutline", "color": "#e67e22" },
+    { "label": "注册用户", "value": 2540, "icon": "PeopleOutline", "color": "#2ecc71" },
+    { "label": "今日提交", "value": 1892, "icon": "BarChartOutline", "color": "#9b59b6" }
+  ],
+  "entries": [
+    {
+      "key": "problems",
+      "title": "题目管理",
+      "description": "新建、编辑题目信息，管理测试数据和算法标签",
+      "icon": "DocumentTextOutline",
+      "color": "#3498db",
+      "actions": ["新建题目", "管理标签", "导入题目"]
+    },
+    {
+      "key": "contests",
+      "title": "比赛管理",
+      "description": "创建比赛、配置赛制与题目列表、管理参赛人员和 Rating",
+      "icon": "TrophyOutline",
+      "color": "#e67e22",
+      "actions": ["创建比赛", "比赛列表", "Rated 设置"]
+    },
+    {
+      "key": "announcements",
+      "title": "公告管理",
+      "description": "发布站内公告、置顶管理，及时传达赛事和平台动态",
+      "icon": "MegaphoneOutline",
+      "color": "#9b59b6",
+      "actions": ["发布公告", "编辑公告", "置顶管理"]
+    },
+    {
+      "key": "users",
+      "title": "用户管理",
+      "description": "查看用户列表、管理角色权限、处理违规封禁与解封",
+      "icon": "PeopleOutline",
+      "color": "#2ecc71",
+      "actions": ["用户列表", "角色管理", "封禁记录"]
+    }
+  ]
+}

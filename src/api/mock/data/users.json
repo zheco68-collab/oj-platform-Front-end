@@ -1,4 +1,292 @@
 {
-  "user": null,
-  "userProfile": null
+  "users": [
+    {
+      "id": 1,
+      "username": "tourist",
+      "avatarUrl": "",
+      "signature": "Codeforces Legendary Grandmaster",
+      "role": "USER",
+      "createdAt": "2024-03-15T08:00:00Z",
+      "acceptedCount": 1523,
+      "submissionCount": 2100,
+      "rating": 3200
+    },
+    {
+      "id": 2,
+      "username": "Petr",
+      "avatarUrl": "",
+      "signature": "Competitive programming enthusiast",
+      "role": "USER",
+      "createdAt": "2024-04-01T10:00:00Z",
+      "acceptedCount": 1387,
+      "submissionCount": 1950,
+      "rating": 3050
+    },
+    {
+      "id": 3,
+      "username": "AC_Automaton",
+      "avatarUrl": "",
+      "signature": "AC one shot, one kill",
+      "role": "ADMIN",
+      "createdAt": "2024-05-20T14:30:00Z",
+      "acceptedCount": 1120,
+      "submissionCount": 1680,
+      "rating": 2800
+    },
+    {
+      "id": 4,
+      "username": "CodeMaster",
+      "avatarUrl": "",
+      "signature": "Love algorithms and data structures",
+      "role": "USER",
+      "createdAt": "2024-06-10T09:00:00Z",
+      "acceptedCount": 980,
+      "submissionCount": 1500,
+      "rating": 2650
+    },
+    {
+      "id": 5,
+      "username": "AlgoQueen",
+      "avatarUrl": "",
+      "signature": "Queen of algorithms 👑",
+      "role": "USER",
+      "createdAt": "2024-07-05T16:00:00Z",
+      "acceptedCount": 876,
+      "submissionCount": 1320,
+      "rating": 2580
+    },
+    {
+      "id": 6,
+      "username": "Debugger",
+      "avatarUrl": "",
+      "signature": "If it compiles, ship it",
+      "role": "USER",
+      "createdAt": "2024-08-12T11:00:00Z",
+      "acceptedCount": 720,
+      "submissionCount": 1400,
+      "rating": 2400
+    },
+    {
+      "id": 7,
+      "username": "NoobCoder",
+      "avatarUrl": "",
+      "signature": "Still learning...",
+      "role": "USER",
+      "createdAt": "2024-09-01T08:00:00Z",
+      "acceptedCount": 320,
+      "submissionCount": 890,
+      "rating": 1800
+    },
+    {
+      "id": 8,
+      "username": "TypeScript",
+      "avatarUrl": "",
+      "signature": "TS is the best!",
+      "role": "USER",
+      "createdAt": "2024-10-15T13:00:00Z",
+      "acceptedCount": 245,
+      "submissionCount": 620,
+      "rating": 1650
+    },
+    {
+      "id": 9,
+      "username": "NewbieKing",
+      "avatarUrl": "",
+      "signature": "King of newbies!",
+      "role": "USER",
+      "createdAt": "2025-01-10T10:00:00Z",
+      "acceptedCount": 456,
+      "submissionCount": 780,
+      "rating": 1950
+    },
+    {
+      "id": 10,
+      "username": "RisingStar",
+      "avatarUrl": "",
+      "signature": "Rising to the top 🚀",
+      "role": "USER",
+      "createdAt": "2025-02-20T15:00:00Z",
+      "acceptedCount": 389,
+      "submissionCount": 650,
+      "rating": 1900
+    },
+    {
+      "id": 11,
+      "username": "CodeNewbie",
+      "avatarUrl": "",
+      "signature": "Starting my CP journey",
+      "role": "USER",
+      "createdAt": "2025-03-05T09:30:00Z",
+      "acceptedCount": 156,
+      "submissionCount": 450,
+      "rating": 1450
+    },
+    {
+      "id": 12,
+      "username": "HelloWorld",
+      "avatarUrl": "",
+      "signature": "Hello, World!",
+      "role": "USER",
+      "createdAt": "2025-04-18T12:00:00Z",
+      "acceptedCount": 89,
+      "submissionCount": 310,
+      "rating": 1200
+    }
+  ],
+  "userProfiles": {
+    "1": {
+      "recentAC": [
+        { "problemId": 105, "problemTitle": "网络流建模 (E)", "acceptedAt": "2026-06-23T06:00:00Z" },
+        { "problemId": 104, "problemTitle": "几何计算 (D)", "acceptedAt": "2026-06-22T14:30:00Z" },
+        { "problemId": 103, "problemTitle": "树形DP优化 (C)", "acceptedAt": "2026-06-22T10:00:00Z" },
+        { "problemId": 102, "problemTitle": "字符串匹配 (B)", "acceptedAt": "2026-06-21T16:00:00Z" },
+        { "problemId": 101, "problemTitle": "数字游戏 (A)", "acceptedAt": "2026-06-21T09:00:00Z" }
+      ],
+      "solutions": [
+        { "id": 1, "title": "网络流建模题解 — Dinic算法详解", "author": { "id": 1, "username": "tourist", "avatarUrl": "" }, "problemId": 105, "problemTitle": "网络流建模 (E)", "createdAt": "2026-06-23T08:00:00Z", "likeCount": 42, "summary": "本题需要将实际问题转化为网络流模型，使用Dinic算法求解最大流..." },
+        { "id": 5, "title": "树形DP优化思路分享", "author": { "id": 1, "username": "tourist", "avatarUrl": "" }, "problemId": 103, "problemTitle": "树形DP优化 (C)", "createdAt": "2026-06-22T12:00:00Z", "likeCount": 28, "summary": "这道树形DP题需要用到换根DP的技巧，结合前缀和优化..." }
+      ],
+      "contestHistory": [
+        { "contestId": 3, "contestName": "周赛 #55 — 图论与搜索", "rank": 1, "ratingChange": 45 },
+        { "contestId": 5, "contestName": "月赛 #5 — 算法综合挑战", "rank": 2, "ratingChange": -12 },
+        { "contestId": 6, "contestName": "Codeforces 模拟赛 Round #3", "rank": 1, "ratingChange": 38 },
+        { "contestId": 8, "contestName": "五一劳动节特别赛", "rank": 2, "ratingChange": 25 }
+      ]
+    },
+    "2": {
+      "recentAC": [
+        { "problemId": 204, "problemTitle": "树形背包 (D)", "acceptedAt": "2026-06-22T20:00:00Z" },
+        { "problemId": 203, "problemTitle": "石子合并 (C)", "acceptedAt": "2026-06-22T15:00:00Z" },
+        { "problemId": 202, "problemTitle": "01背包变形 (B)", "acceptedAt": "2026-06-21T18:00:00Z" }
+      ],
+      "solutions": [
+        { "id": 3, "title": "树形背包的N种写法", "author": { "id": 2, "username": "Petr", "avatarUrl": "" }, "problemId": 204, "problemTitle": "树形背包 (D)", "createdAt": "2026-06-23T10:00:00Z", "likeCount": 35, "summary": "树形背包（树上背包）是树形DP中的经典问题，本文整理了多种实现方式..." }
+      ],
+      "contestHistory": [
+        { "contestId": 3, "contestName": "周赛 #55 — 图论与搜索", "rank": 2, "ratingChange": 32 },
+        { "contestId": 5, "contestName": "月赛 #5 — 算法综合挑战", "rank": 1, "ratingChange": 55 },
+        { "contestId": 8, "contestName": "五一劳动节特别赛", "rank": 1, "ratingChange": 48 }
+      ]
+    },
+    "3": {
+      "recentAC": [
+        { "problemId": 303, "problemTitle": "最小生成树 (C)", "acceptedAt": "2026-06-23T14:00:00Z" },
+        { "problemId": 302, "problemTitle": "拓扑排序 (B)", "acceptedAt": "2026-06-23T13:30:00Z" },
+        { "problemId": 301, "problemTitle": "迷宫最短路径 (A)", "acceptedAt": "2026-06-23T13:00:00Z" }
+      ],
+      "solutions": [
+        { "id": 2, "title": "最小生成树 Kruskal vs Prim", "author": { "id": 3, "username": "AC_Automaton", "avatarUrl": "" }, "problemId": 303, "problemTitle": "最小生成树 (C)", "createdAt": "2026-06-23T15:00:00Z", "likeCount": 56, "summary": "本文对比了Kruskal和Prim两种最小生成树算法在不同场景下的优劣..." }
+      ],
+      "contestHistory": [
+        { "contestId": 3, "contestName": "周赛 #55 — 图论与搜索", "rank": 3, "ratingChange": 18 },
+        { "contestId": 5, "contestName": "月赛 #5 — 算法综合挑战", "rank": 3, "ratingChange": 5 },
+        { "contestId": 6, "contestName": "Codeforces 模拟赛 Round #3", "rank": 3, "ratingChange": 10 },
+        { "contestId": 8, "contestName": "五一劳动节特别赛", "rank": 3, "ratingChange": -8 }
+      ]
+    },
+    "4": {
+      "recentAC": [
+        { "problemId": 302, "problemTitle": "拓扑排序 (B)", "acceptedAt": "2026-06-23T14:30:00Z" },
+        { "problemId": 301, "problemTitle": "迷宫最短路径 (A)", "acceptedAt": "2026-06-23T13:10:00Z" }
+      ],
+      "solutions": [
+        { "id": 6, "title": "拓扑排序的BFS实现", "author": { "id": 4, "username": "CodeMaster", "avatarUrl": "" }, "problemId": 302, "problemTitle": "拓扑排序 (B)", "createdAt": "2026-06-23T16:00:00Z", "likeCount": 18, "summary": "拓扑排序是图论中的基础算法，BFS实现（Kahn算法）思路清晰..." }
+      ],
+      "contestHistory": [
+        { "contestId": 3, "contestName": "周赛 #55 — 图论与搜索", "rank": 4, "ratingChange": 5 },
+        { "contestId": 5, "contestName": "月赛 #5 — 算法综合挑战", "rank": 4, "ratingChange": -3 },
+        { "contestId": 6, "contestName": "Codeforces 模拟赛 Round #3", "rank": 2, "ratingChange": 28 },
+        { "contestId": 8, "contestName": "五一劳动节特别赛", "rank": 5, "ratingChange": -15 }
+      ]
+    },
+    "5": {
+      "recentAC": [
+        { "problemId": 301, "problemTitle": "迷宫最短路径 (A)", "acceptedAt": "2026-06-23T13:20:00Z" },
+        { "problemId": 204, "problemTitle": "树形背包 (D)", "acceptedAt": "2026-06-22T18:00:00Z" }
+      ],
+      "solutions": [
+        { "id": 7, "title": "BFS解决迷宫问题", "author": { "id": 5, "username": "AlgoQueen", "avatarUrl": "" }, "problemId": 301, "problemTitle": "迷宫最短路径 (A)", "createdAt": "2026-06-23T17:00:00Z", "likeCount": 22, "summary": "使用BFS解决迷宫最短路径的标准做法，附带常见坑点分析..." }
+      ],
+      "contestHistory": [
+        { "contestId": 3, "contestName": "周赛 #55 — 图论与搜索", "rank": 5, "ratingChange": -5 },
+        { "contestId": 5, "contestName": "月赛 #5 — 算法综合挑战", "rank": 5, "ratingChange": -10 },
+        { "contestId": 8, "contestName": "五一劳动节特别赛", "rank": 4, "ratingChange": 15 }
+      ]
+    },
+    "6": {
+      "recentAC": [
+        { "problemId": 302, "problemTitle": "拓扑排序 (B)", "acceptedAt": "2026-06-23T14:00:00Z" },
+        { "problemId": 301, "problemTitle": "迷宫最短路径 (A)", "acceptedAt": "2026-06-23T13:40:00Z" }
+      ],
+      "solutions": [],
+      "contestHistory": [
+        { "contestId": 3, "contestName": "周赛 #55 — 图论与搜索", "rank": 6, "ratingChange": -8 },
+        { "contestId": 6, "contestName": "Codeforces 模拟赛 Round #3", "rank": 4, "ratingChange": 12 },
+        { "contestId": 8, "contestName": "五一劳动节特别赛", "rank": 6, "ratingChange": -20 }
+      ]
+    },
+    "7": {
+      "recentAC": [
+        { "problemId": 301, "problemTitle": "迷宫最短路径 (A)", "acceptedAt": "2026-06-23T14:20:00Z" }
+      ],
+      "solutions": [],
+      "contestHistory": [
+        { "contestId": 3, "contestName": "周赛 #55 — 图论与搜索", "rank": 7, "ratingChange": -25 }
+      ]
+    },
+    "8": {
+      "recentAC": [],
+      "solutions": [],
+      "contestHistory": [
+        { "contestId": 3, "contestName": "周赛 #55 — 图论与搜索", "rank": 8, "ratingChange": -30 }
+      ]
+    },
+    "9": {
+      "recentAC": [
+        { "problemId": 406, "problemTitle": "最大公约数 (F)", "acceptedAt": "2026-06-15T18:00:00Z" },
+        { "problemId": 405, "problemTitle": "回文判断 (E)", "acceptedAt": "2026-06-15T15:00:00Z" },
+        { "problemId": 404, "problemTitle": "冒泡排序 (D)", "acceptedAt": "2026-06-15T14:00:00Z" },
+        { "problemId": 403, "problemTitle": "斐波那契数列 (C)", "acceptedAt": "2026-06-15T12:00:00Z" },
+        { "problemId": 402, "problemTitle": "两数之和 (B)", "acceptedAt": "2026-06-15T11:00:00Z" },
+        { "problemId": 401, "problemTitle": "Hello World (A)", "acceptedAt": "2026-06-15T10:30:00Z" }
+      ],
+      "solutions": [],
+      "contestHistory": [
+        { "contestId": 4, "contestName": "新手练习赛 #12", "rank": 1, "ratingChange": 45 },
+        { "contestId": 7, "contestName": "ACM 校赛热身赛", "rank": 3, "ratingChange": 15 }
+      ]
+    },
+    "10": {
+      "recentAC": [
+        { "problemId": 405, "problemTitle": "回文判断 (E)", "acceptedAt": "2026-06-15T17:00:00Z" },
+        { "problemId": 404, "problemTitle": "冒泡排序 (D)", "acceptedAt": "2026-06-15T13:00:00Z" },
+        { "problemId": 403, "problemTitle": "斐波那契数列 (C)", "acceptedAt": "2026-06-15T11:30:00Z" }
+      ],
+      "solutions": [],
+      "contestHistory": [
+        { "contestId": 4, "contestName": "新手练习赛 #12", "rank": 2, "ratingChange": 35 },
+        { "contestId": 7, "contestName": "ACM 校赛热身赛", "rank": 1, "ratingChange": 40 }
+      ]
+    },
+    "11": {
+      "recentAC": [
+        { "problemId": 403, "problemTitle": "斐波那契数列 (C)", "acceptedAt": "2026-06-15T15:30:00Z" },
+        { "problemId": 402, "problemTitle": "两数之和 (B)", "acceptedAt": "2026-06-15T11:00:00Z" }
+      ],
+      "solutions": [],
+      "contestHistory": [
+        { "contestId": 4, "contestName": "新手练习赛 #12", "rank": 3, "ratingChange": 25 },
+        { "contestId": 7, "contestName": "ACM 校赛热身赛", "rank": 2, "ratingChange": 20 }
+      ]
+    },
+    "12": {
+      "recentAC": [
+        { "problemId": 401, "problemTitle": "Hello World (A)", "acceptedAt": "2026-06-15T10:40:00Z" }
+      ],
+      "solutions": [],
+      "contestHistory": [
+        { "contestId": 4, "contestName": "新手练习赛 #12", "rank": 4, "ratingChange": 10 }
+      ]
+    }
+  }
 }
