@@ -1,0 +1,207 @@
+{
+  "1": {
+    "id": 1,
+    "title": "A + B 问题的 10 种写法 — 从入门到炫技",
+    "author": { "id": 1, "username": "AlgorithmMaster", "avatarUrl": "" },
+    "problemId": 1001,
+    "problemTitle": "A + B 问题",
+    "createdAt": "2026-06-23T06:00:00Z",
+    "content": "# A + B 问题的 10 种写法\n\n## 前言\n\nA + B 问题是每个 OIer 的第一道题。看似简单，但我们可以用不同的方式来实现它。\n\n## 1. 基础写法：cin / cout\n\n```cpp\n#include <iostream>\nusing namespace std;\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << endl;\n    return 0;\n}\n```\n\n## 2. C 风格：scanf / printf\n\n```cpp\n#include <cstdio>\nint main() {\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    printf(\"%d\\n\", a + b);\n    return 0;\n}\n```\n\n## 3. 快速 IO\n\n```cpp\n#include <iostream>\nusing namespace std;\nint main() {\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n    return 0;\n}\n```\n\n## 4. 使用函数\n\n```cpp\n#include <iostream>\nusing namespace std;\n\nint add(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << add(a, b) << '\\n';\n    return 0;\n}\n```\n\n## 小结\n\n以上四种是最基础的写法。下面我们来看一些有趣的实现。\n\n## 5. 位运算（无进位加法）\n\n```cpp\n#include <iostream>\nusing namespace std;\n\nint add(int a, int b) {\n    while (b) {\n        int carry = a & b;\n        a = a ^ b;\n        b = carry << 1;\n    }\n    return a;\n}\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << add(a, b) << endl;\n    return 0;\n}\n```\n\n这个方法用**位运算**模拟了加法器的原理：\n\n- $a \\oplus b$ 是不进位的和\n- $a \\land b$ 是进位\n- 递归/循环直到进位为 0\n\n时间复杂度：$O(\\log n)$，其中 $n$ 是数值大小。\n\n> 以上内容仅为示例，展示了 Markdown + LaTeX + 代码高亮的渲染效果。",
+    "likeCount": 128,
+    "dislikeCount": 3,
+    "comments": [
+      {
+        "id": 101,
+        "author": { "id": 11, "username": "NewbieCoder", "avatarUrl": "" },
+        "content": "太强了！尤其是汇编内联的写法，大开眼界。",
+        "createdAt": "2026-06-23T08:30:00Z",
+        "replies": [
+          {
+            "id": 102,
+            "author": { "id": 1, "username": "AlgorithmMaster", "avatarUrl": "" },
+            "content": "谢谢！汇编那部分确实比较进阶，可以先看看前面的基础写法。",
+            "createdAt": "2026-06-23T09:00:00Z",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "id": 103,
+        "author": { "id": 12, "username": "CppLover", "avatarUrl": "" },
+        "content": "请问第7种写法的位运算部分可以再详细解释一下吗？",
+        "createdAt": "2026-06-23T10:15:00Z",
+        "replies": []
+      }
+    ]
+  },
+  "2": {
+    "id": 2,
+    "title": "动态规划入门：从斐波那契到背包问题",
+    "author": { "id": 2, "username": "DP_King", "avatarUrl": "" },
+    "problemId": 1002,
+    "problemTitle": "斐波那契数列",
+    "createdAt": "2026-06-23T03:00:00Z",
+    "content": "# 动态规划入门：从斐波那契到背包问题\n\n## 什么是动态规划？\n\n动态规划（Dynamic Programming，简称 DP）是解决**最优化问题**的经典方法。\n\n核心思想：**把原问题分解为子问题，自底向上求解**。\n\n## 斐波那契数列\n\n最经典的 DP 入门题。递推公式：\n\n$$F(n) = F(n-1) + F(n-2), \\quad F(1)=1, F(2)=1$$\n\n### 记忆化搜索（自顶向下）\n\n```cpp\nint fib(int n) {\n    if (n <= 2) return 1;\n    if (memo[n]) return memo[n];\n    return memo[n] = fib(n - 1) + fib(n - 2);\n}\n```\n\n### 递推（自底向上）\n\n```cpp\nint fib(int n) {\n    int a = 1, b = 1;\n    for (int i = 3; i <= n; i++) {\n        int c = a + b;\n        a = b;\n        b = c;\n    }\n    return b;\n}\n```\n\n## DP 的核心要素\n\n1. **状态定义**：$dp[i]$ 表示什么？\n2. **状态转移方程**：$dp[i]$ 如何从之前的 $dp$ 推导？\n3. **初始状态**：边界条件\n4. **最优子结构**：大问题的最优解包含子问题的最优解\n5. **重叠子问题**：相同的子问题被多次计算\n\n## 0-1 背包问题\n\n> 有 $N$ 件物品和一个容量为 $V$ 的背包。第 $i$ 件物品的费用是 $w_i$，价值是 $v_i$。求装入背包的最大总价值。\n\n状态：$dp[i][j]$ 表示前 $i$ 件物品、容量 $j$ 的最大价值。\n\n转移方程：\n$$dp[i][j] = \\max(dp[i-1][j], dp[i-1][j-w_i] + v_i)$$\n\n```cpp\nfor (int i = 1; i <= N; i++)\n    for (int j = V; j >= w[i]; j--)\n        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);\n```\n\n## 总结\n\nDP 没有捷径，**多练多画表**是唯一的王道！",
+    "likeCount": 95,
+    "dislikeCount": 2,
+    "comments": [
+      {
+        "id": 201,
+        "author": { "id": 13, "username": "Beginner123", "avatarUrl": "" },
+        "content": "终于理解了最优子结构！之前一直卡在这个概念上。",
+        "createdAt": "2026-06-23T04:00:00Z",
+        "replies": []
+      },
+      {
+        "id": 202,
+        "author": { "id": 14, "username": "AlgoStudent", "avatarUrl": "" },
+        "content": "能不能补充一下状态压缩的技巧？感觉这部分的例题有点少。",
+        "createdAt": "2026-06-23T05:30:00Z",
+        "replies": [
+          {
+            "id": 203,
+            "author": { "id": 2, "username": "DP_King", "avatarUrl": "" },
+            "content": "好的，后续会更新状态压缩专题！可以关注我的后续题解。",
+            "createdAt": "2026-06-23T06:00:00Z",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  "3": {
+    "id": 3,
+    "title": "线段树从入门到入土 — 区间操作全解析",
+    "author": { "id": 3, "username": "TreeLover", "avatarUrl": "" },
+    "problemId": 1016,
+    "problemTitle": "线段树",
+    "createdAt": "2026-06-23T00:00:00Z",
+    "content": "# 线段树从入门到入土\n\n## 什么是线段树？\n\n线段树是一种**二叉树**，用于维护区间信息。支持：\n\n- 单点修改 $O(\\log n)$\n- 区间查询 $O(\\log n)$\n- 区间修改（懒标记）$O(\\log n)$\n\n## 建树\n\n```cpp\nint tree[MAXN * 4];\n\nvoid build(int p, int l, int r) {\n    if (l == r) {\n        tree[p] = a[l];\n        return;\n    }\n    int mid = (l + r) >> 1;\n    build(p << 1, l, mid);\n    build(p << 1 | 1, mid + 1, r);\n    tree[p] = tree[p << 1] + tree[p << 1 | 1];\n}\n```\n\n## 区间查询\n\n```cpp\nint query(int p, int l, int r, int ql, int qr) {\n    if (ql <= l && r <= qr) return tree[p];\n    int mid = (l + r) >> 1, sum = 0;\n    if (ql <= mid) sum += query(p << 1, l, mid, ql, qr);\n    if (qr > mid) sum += query(p << 1 | 1, mid + 1, r, ql, qr);\n    return sum;\n}\n```\n\n## 懒标记（Lazy Tag）\n\n区间修改的核心优化。标记下传：\n\n```cpp\nint lazy[MAXN * 4];\n\nvoid pushdown(int p, int l, int r) {\n    if (!lazy[p]) return;\n    int mid = (l + r) >> 1;\n    tree[p << 1] += lazy[p] * (mid - l + 1);\n    lazy[p << 1] += lazy[p];\n    tree[p << 1 | 1] += lazy[p] * (r - mid);\n    lazy[p << 1 | 1] += lazy[p];\n    lazy[p] = 0;\n}\n```\n\n## 复杂度分析\n\n| 操作 | 时间复杂度 |\n|------|----------|\n| 建树 | $O(n)$ |\n| 单点修改 | $O(\\log n)$ |\n| 区间查询 | $O(\\log n)$ |\n| 区间修改 | $O(\\log n)$ |\n\n线段树的常数略大，但功能强大，是竞赛中的必备数据结构！",
+    "likeCount": 76,
+    "dislikeCount": 1,
+    "comments": [
+      {
+        "id": 301,
+        "author": { "id": 15, "username": "SegTreeNewbie", "avatarUrl": "" },
+        "content": "懒标记的下传部分图示非常清晰，感谢！",
+        "createdAt": "2026-06-23T01:00:00Z",
+        "replies": []
+      }
+    ]
+  },
+  "4": {
+    "id": 4,
+    "title": "KMP 算法图解 — 为什么 next 数组这样求？",
+    "author": { "id": 4, "username": "StringMaster", "avatarUrl": "" },
+    "problemId": 1015,
+    "problemTitle": "KMP 字符串匹配",
+    "createdAt": "2026-06-22T20:00:00Z",
+    "content": "# KMP 算法图解\n\n## 朴素匹配\n\n```cpp\nfor (int i = 0; i <= n - m; i++) {\n    bool match = true;\n    for (int j = 0; j < m; j++)\n        if (s[i+j] != p[j]) { match = false; break; }\n    if (match) cout << i << '\\n';\n}\n```\n\n时间复杂度：$O(nm)$\n\n## KMP 的核心：next 数组\n\nnext[i] = 模式串前缀 P[0..i-1] 中最长相等前后缀的长度。\n\n### 手算 next 数组\n\n以模式串 \"ababc\" 为例：\n\n| i | 前缀子串 | next[i] | 说明 |\n|---|---------|--------|------|\n| 0 | — | -1 | 约定 |\n| 1 | a | 0 | 无相等前后缀 |\n| 2 | ab | 0 | 无相等前后缀 |\n| 3 | aba | 1 | 前缀 a = 后缀 a |\n| 4 | abab | 2 | 前缀 ab = 后缀 ab |\n| 5 | ababc | 0 | 无相等前后缀 |\n\n## KMP 匹配过程\n\n匹配失败时，j = next[j]，即利用已知信息跳过不必要的比较。\n\n整个算法时间复杂度：$O(n + m)$，线性！\n\n```cpp\nvector<int> kmp(const string& s, const string& p) {\n    int n = s.size(), m = p.size();\n    vector<int> next(m);\n    for (int i = 1, j = 0; i < m; i++) {\n        while (j && p[i] != p[j]) j = next[j - 1];\n        if (p[i] == p[j]) j++;\n        next[i] = j;\n    }\n    vector<int> res;\n    for (int i = 0, j = 0; i < n; i++) {\n        while (j && s[i] != p[j]) j = next[j - 1];\n        if (s[i] == p[j]) j++;\n        if (j == m) {\n            res.push_back(i - m + 1);\n            j = next[j - 1];\n        }\n    }\n    return res;\n}\n```\n\n> KMP 的关键在于理解 next 数组的物理意义，而不是死记代码。",
+    "likeCount": 64,
+    "dislikeCount": 0,
+    "comments": [
+      {
+        "id": 401,
+        "author": { "id": 16, "username": "RegexFan", "avatarUrl": "" },
+        "content": "next数组的图解太棒了，终于不再死记硬背了。",
+        "createdAt": "2026-06-22T22:00:00Z",
+        "replies": []
+      },
+      {
+        "id": 402,
+        "author": { "id": 17, "username": "PatternHunter", "avatarUrl": "" },
+        "content": "请问KMP和Z Algorithm在实际竞赛中哪个更常用？",
+        "createdAt": "2026-06-23T00:00:00Z",
+        "replies": [
+          {
+            "id": 403,
+            "author": { "id": 4, "username": "StringMaster", "avatarUrl": "" },
+            "content": "KMP更常用一些，但Z Algorithm在某些场景下更简洁。建议两个都掌握。",
+            "createdAt": "2026-06-23T02:00:00Z",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  "5": {
+    "id": 5,
+    "title": "二分查找的边界处理 — 再也不怕死循环",
+    "author": { "id": 5, "username": "BinarySearch", "avatarUrl": "" },
+    "problemId": 1007,
+    "problemTitle": "二分查找",
+    "createdAt": "2026-06-22T14:00:00Z",
+    "content": "# 二分查找的边界处理\n\n## 最经典的问题\n\n在一个有序数组中查找目标值。\n\n## 模板一：左闭右开 [l, r)\n\n```cpp\nint binarySearch(vector<int>& nums, int target) {\n    int l = 0, r = nums.size();\n    while (l < r) {\n        int mid = l + (r - l) / 2;\n        if (nums[mid] >= target)\n            r = mid;\n        else\n            l = mid + 1;\n    }\n    return l;\n}\n```\n\n特点：找第一个大于等于 target 的位置。\n\n## 模板二：左闭右闭 [l, r]\n\n```cpp\nint binarySearch(vector<int>& nums, int target) {\n    int l = 0, r = nums.size() - 1;\n    while (l <= r) {\n        int mid = l + (r - l) / 2;\n        if (nums[mid] == target) return mid;\n        else if (nums[mid] < target) l = mid + 1;\n        else r = mid - 1;\n    }\n    return -1;\n}\n```\n\n## 四大变体总结\n\n| 问题 | 模板 | 技巧 |\n|------|------|------|\n| 找 target | 闭区间 | l <= r，直接返回 |\n| 第一个 >= target | 左闭右开 | 收缩右边界 |\n| 最后一个 <= target | 左闭右开 | 验证 l - 1 |\n| 第一个 > target | 左闭右开 | l 的位置 |\n\n## 避免死循环的黄金法则\n\n1. 永远用 l + (r - l) / 2 而不是 (l + r) / 2（防止溢出）\n2. 收缩区间时，左边界必须 mid + 1\n3. 根据场景选择合适的开闭区间\n\n记住口诀：左收要加一，右收不用减。\n\n> 二分虽然简单，但细节决定成败！",
+    "likeCount": 58,
+    "dislikeCount": 1,
+    "comments": [
+      {
+        "id": 501,
+        "author": { "id": 18, "username": "LoopBreaker", "avatarUrl": "" },
+        "content": "四种模板总结得太好了，已收藏！",
+        "createdAt": "2026-06-22T16:00:00Z",
+        "replies": []
+      }
+    ]
+  },
+  "6": {
+    "id": 6,
+    "title": "最短路径四大算法对比 — Dijkstra / Bellman-Ford / SPFA / Floyd",
+    "author": { "id": 6, "username": "GraphTheory", "avatarUrl": "" },
+    "problemId": 1010,
+    "problemTitle": "最短路径",
+    "createdAt": "2026-06-22T08:00:00Z",
+    "content": "# 最短路径四大算法对比\n\n## 概览\n\n| 算法 | 时间复杂度 | 适用场景 | 负权边 |\n|------|----------|---------|--------|\n| Dijkstra | $O((V+E)\\log V)$ | 正权图 | 不支持 |\n| Bellman-Ford | $O(VE)$ | 有负权 | 支持 |\n| SPFA | $O(kE)$ 均摊 | 一般稀疏图 | 支持 |\n| Floyd | $O(V^3)$ | 多源最短路 | 支持（不含负环） |\n\n## Dijkstra 算法\n\n```cpp\nvoid dijkstra(int s) {\n    priority_queue<pair<int,int>> pq;\n    dist[s] = 0;\n    pq.push({0, s});\n    while (!pq.empty()) {\n        auto [d, u] = pq.top(); pq.pop();\n        if (d > dist[u]) continue;\n        for (auto [v, w] : g[u]) {\n            if (dist[v] > dist[u] + w) {\n                dist[v] = dist[u] + w;\n                pq.push({dist[v], v});\n            }\n        }\n    }\n}\n```\n\n## SPFA\n\n```cpp\nbool spfa(int s) {\n    queue<int> q;\n    dist[s] = 0; inq[s] = true; q.push(s);\n    while (!q.empty()) {\n        int u = q.front(); q.pop(); inq[u] = false;\n        for (auto [v, w] : g[u]) {\n            if (dist[v] > dist[u] + w) {\n                dist[v] = dist[u] + w;\n                if (!inq[v]) {\n                    q.push(v);\n                    inq[v] = true;\n                    if (++cnt[v] > n) return false; // 负环\n                }\n            }\n        }\n    }\n    return true;\n}\n```\n\n## 选择建议\n\n- 正权图 -> Dijkstra（最优）\n- 可能有负权、需要判负环 -> SPFA（虽然可能被卡）\n- 多源最短路 -> Floyd\n- 确定负权且 SPFA 被卡 -> Bellman-Ford 优化版",
+    "likeCount": 112,
+    "dislikeCount": 2,
+    "comments": []
+  },
+  "7": {
+    "id": 7,
+    "title": "并查集优化技巧：路径压缩 + 按秩合并",
+    "author": { "id": 7, "username": "DSU_Fan", "avatarUrl": "" },
+    "problemId": 1013,
+    "problemTitle": "并查集",
+    "createdAt": "2026-06-22T02:00:00Z",
+    "content": "# 并查集优化技巧\n\n## 基础并查集\n\n```cpp\nint fa[MAXN];\nint find(int x) {\n    return fa[x] == x ? x : find(fa[x]);\n}\n```\n\n## 优化一：路径压缩\n\n```cpp\nint find(int x) {\n    return fa[x] == x ? x : fa[x] = find(fa[x]);\n}\n```\n\n## 优化二：按秩合并\n\n```cpp\nvoid unite(int x, int y) {\n    x = find(x), y = find(y);\n    if (x == y) return;\n    if (rk[x] < rk[y]) swap(x, y);\n    fa[y] = x;\n    if (rk[x] == rk[y]) rk[x]++;\n}\n```\n\n## 均摊复杂度\n\n同时使用两种优化后，均摊复杂度为 $O(\\alpha(n))$，其中 $\\alpha(n)$ 是反阿克曼函数，对于任何实际输入 $\\alpha(n) \\leq 4$。\n\n> 几乎可以认为是常数时间！",
+    "likeCount": 43,
+    "dislikeCount": 0,
+    "comments": []
+  },
+  "8": {
+    "id": 8,
+    "title": "最小生成树：Kruskal vs Prim — 什么时候用哪个？",
+    "author": { "id": 8, "username": "MST_Explorer", "avatarUrl": "" },
+    "problemId": 1017,
+    "problemTitle": "最小生成树",
+    "createdAt": "2026-06-21T20:00:00Z",
+    "content": "# Kruskal vs Prim\n\n## Kruskal 算法\n\n基于边的贪心：每次选最小权边，不构成环则加入。\n\n```cpp\nsort(edges.begin(), edges.end());\nfor (auto [u, v, w] : edges) {\n    if (find(u) != find(v)) {\n        unite(u, v);\n        ans += w;\n    }\n}\n```\n\n时间复杂度：$O(E \\log E)$\n\n## Prim 算法\n\n基于点的贪心：每次选离已选集合最近的点。\n\n```cpp\npriority_queue<pair<int,int>> pq;\ndist[1] = 0; pq.push({0, 1});\nwhile (!pq.empty()) {\n    auto [d, u] = pq.top(); pq.pop();\n    if (vis[u]) continue; vis[u] = true;\n    ans += d;\n    for (auto [v, w] : g[u])\n        if (!vis[v] && dist[v] > w)\n            pq.push({dist[v] = w, v});\n    }\n}\n```\n\n时间复杂度：$O((V+E)\\log V)$\n\n## 选择建议\n\n| 场景 | 推荐 |\n|------|------|\n| 稀疏图（E 接近 V） | Kruskal |\n| 稠密图（E 接近 V^2） | Prim（朴素 O(V^2) 更优）|\n| 需要并查集 | Kruskal |",
+    "likeCount": 37,
+    "dislikeCount": 0,
+    "comments": []
+  },
+  "9": {
+    "id": 9,
+    "title": "网络流入门：从最大流到最小割",
+    "author": { "id": 9, "username": "FlowGod", "avatarUrl": "" },
+    "problemId": 1020,
+    "problemTitle": "网络流",
+    "createdAt": "2026-06-21T08:00:00Z",
+    "content": "# 网络流入门\n\n## 最大流问题\n\n在一个有向图中，求从源点 s 到汇点 t 的最大流量。\n\n## Ford-Fulkerson 方法\n\n```cpp\nint dfs(int u, int t, int f) {\n    if (u == t) return f;\n    vis[u] = true;\n    for (auto& e : g[u]) {\n        if (!vis[e.to] && e.cap > 0) {\n            int d = dfs(e.to, t, min(f, e.cap));\n            if (d > 0) {\n                e.cap -= d;\n                g[e.to][e.rev].cap += d;\n                return d;\n            }\n        }\n    }\n    return 0;\n}\n```\n\n## Dinic 算法\n\n```cpp\nbool bfs(int s, int t) {\n    fill(level, level + N, -1);\n    queue<int> q;\n    level[s] = 0; q.push(s);\n    while (!q.empty()) {\n        int u = q.front(); q.pop();\n        for (auto& e : g[u])\n            if (e.cap > 0 && level[e.to] < 0)\n                level[e.to] = level[u] + 1, q.push(e.to);\n    }\n    return level[t] >= 0;\n}\n```\n\n时间复杂度：$O(V^2E)$\n\n## 最大流最小割定理\n\n最大流 = 最小割\n\n这是网络流中最重要的定理之一。",
+    "likeCount": 89,
+    "dislikeCount": 1,
+    "comments": []
+  },
+  "10": {
+    "id": 10,
+    "title": "0-1 背包问题的空间优化：从二维到一维",
+    "author": { "id": 10, "username": "PackSolver", "avatarUrl": "" },
+    "problemId": 1018,
+    "problemTitle": "0-1 背包问题",
+    "createdAt": "2026-06-21T02:00:00Z",
+    "content": "# 0-1 背包问题空间优化\n\n## 二维写法\n\n```cpp\nfor (int i = 1; i <= N; i++)\n    for (int j = 0; j <= V; j++)\n        if (j >= w[i])\n            dp[i][j] = max(dp[i-1][j], dp[i-1][j-w[i]] + v[i]);\n        else\n            dp[i][j] = dp[i-1][j];\n```\n\n## 一维优化\n\n```cpp\nfor (int i = 1; i <= N; i++)\n    for (int j = V; j >= w[i]; j--)\n        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);\n```\n\n## 为什么要逆序？\n\n因为 dp[j-w[i]] 必须是上一件物品的结果。\n\n- 正序：dp[j-w[i]] 已被当前物品更新 -> 完全背包\n- 逆序：dp[j-w[i]] 仍是上一件物品的结果 -> 0-1 背包\n\n## 图示\n\n| 枚举顺序 | 效果 |\n|---------|------|\n| 正序 (0 -> V) | 每件物品可用无限次 |\n| 逆序 (V -> 0) | 每件物品最多用一次 |\n\n> 这个小技巧是背包问题的精髓！",
+    "likeCount": 52,
+    "dislikeCount": 0,
+    "comments": []
+  }
+}

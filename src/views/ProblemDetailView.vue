@@ -121,7 +121,6 @@ onUnmounted(() => {
             <span class="problem-id">P{{ problemStore.currentProblem.id }}</span>
             <h1 class="problem-title">{{ problemStore.currentProblem.title }}</h1>
           </div>
-          <DifficultyTag :difficulty="problemStore.currentProblem.difficulty" />
         </div>
 
         <!-- 元信息 -->
@@ -133,13 +132,6 @@ onUnmounted(() => {
             <strong>内存限制：</strong>{{ formatMemoryLimit(problemStore.currentProblem.memoryLimit) }}
           </span>
           <span><strong>来源：</strong>{{ problemStore.currentProblem.source }}</span>
-          <span>
-            <strong>通过率：</strong>
-            {{ problemStore.currentProblem.submissionCount > 0
-              ? ((problemStore.currentProblem.acceptedCount / problemStore.currentProblem.submissionCount) * 100).toFixed(1) + '%'
-              : '0%'
-            }}
-          </span>
         </NSpace>
 
         <NDivider />
@@ -268,26 +260,55 @@ onUnmounted(() => {
       </NCard>
     </div>
 
-    <!-- 右侧：算法标签 -->
-    <div class="right-panel">
-      <NCard title="算法标签" size="small">
-        <NSpace wrap>
-          <NTag
-            v-for="tag in problemStore.currentProblem?.tags"
-            :key="tag"
-            type="info"
-            size="small"
-            style="cursor: pointer"
-            @click="router.push({ name: 'problem-list', query: { tags: tag } })"
-          >
-            {{ tag }}
-          </NTag>
-        </NSpace>
-        <NEmpty
-          v-if="!problemStore.currentProblem?.tags?.length"
-          description="暂无标签"
-          size="small"
-        />
+    <!-- 右侧：难度 + 通过率 + 算法标签 -->
+    <div
+      v-if="problemStore.currentProblem"
+      class="right-panel"
+    >
+      <NCard size="small">
+        <div class="right-panel-content">
+          <!-- 难度 -->
+          <div class="right-item">
+            <span class="right-label">难度</span>
+            <DifficultyTag :difficulty="problemStore.currentProblem.difficulty" />
+          </div>
+
+          <!-- 通过率 -->
+          <div class="right-item">
+            <span class="right-label">通过率</span>
+            <span class="right-value">
+              <strong>{{
+                problemStore.currentProblem.submissionCount > 0
+                  ? ((problemStore.currentProblem.acceptedCount / problemStore.currentProblem.submissionCount) * 100).toFixed(1) + '%'
+                  : '0%'
+              }}</strong>
+              <span class="pass-detail">
+                {{ problemStore.currentProblem.acceptedCount }} 通过 / {{ problemStore.currentProblem.submissionCount }} 提交
+              </span>
+            </span>
+          </div>
+
+          <!-- 算法标签 -->
+          <div class="right-item">
+            <span class="right-label">算法标签</span>
+            <div class="tag-list">
+              <NTag
+                v-for="tag in problemStore.currentProblem.tags"
+                :key="tag"
+                type="info"
+                size="small"
+                class="alg-tag"
+                @click="router.push({ name: 'problem-list', query: { tags: tag } })"
+              >
+                {{ tag }}
+              </NTag>
+              <span
+                v-if="!problemStore.currentProblem.tags?.length"
+                class="no-tags"
+              >暂无标签</span>
+            </div>
+          </div>
+        </div>
       </NCard>
     </div>
 
@@ -341,8 +362,10 @@ onUnmounted(() => {
 <style scoped>
 .problem-detail {
   display: grid;
-  grid-template-columns: 7fr 3fr;
-  gap: var(--gap-md);
+  grid-template-columns: minmax(0, 860px) 280px;
+  gap: var(--gap-lg);
+  justify-content: center;
+  align-items: start;
 }
 
 .left-panel {
@@ -355,7 +378,8 @@ onUnmounted(() => {
 }
 
 .bottom-panel {
-  grid-column: 1 / -1;
+  grid-column: 1;
+  min-width: 0;
 }
 
 /* 加载状态 */
@@ -396,6 +420,63 @@ onUnmounted(() => {
   font-weight: 600;
   margin: 0;
   line-height: 1.3;
+}
+
+/* 右侧栏：难度 + 通过率 + 算法标签 */
+.right-panel-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+}
+
+.right-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.right-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.right-value {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.right-value strong {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+.pass-detail {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.alg-tag {
+  cursor: pointer;
+}
+
+.alg-tag:hover {
+  color: var(--color-primary) !important;
+}
+
+.no-tags {
+  font-size: 0.85rem;
+  color: var(--text-muted);
 }
 
 /* 元信息 */
@@ -555,8 +636,6 @@ onUnmounted(() => {
   .problem-detail {
     grid-template-columns: 1fr;
   }
-  .left-panel,
-  .right-panel,
   .bottom-panel {
     grid-column: 1;
   }

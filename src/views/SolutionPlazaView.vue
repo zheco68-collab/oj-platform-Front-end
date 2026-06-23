@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, onMounted, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import {
   NSpin,
   NPagination,
@@ -9,21 +9,23 @@ import {
   NIcon,
   NRadioGroup,
   NRadioButton,
+  NInput,
+  NInputGroup,
+  NTag,
   useMessage,
 } from 'naive-ui'
-import { ThumbsUpOutline, CreateOutline, ArrowBack } from '@vicons/ionicons5'
+import { ThumbsUpOutline, CreateOutline, SearchOutline } from '@vicons/ionicons5'
 import { useSolutionStore } from '../stores/solution'
 import UserAvatar from '../components/UserAvatar.vue'
 import { formatDateTime } from '../utils'
 
-const route = useRoute()
 const router = useRouter()
 const message = useMessage()
 const store = useSolutionStore()
 
-// ==================== 基础状态 ====================
+// ==================== 状态 ====================
 
-const problemId = computed(() => Number(route.params.id))
+const searchKeyword = ref('')
 
 const sortOptions = [
   { label: '按时间', value: 'time' as const },
@@ -34,20 +36,31 @@ const sortOptions = [
 
 async function loadList(): Promise<void> {
   try {
-    await store.fetchList(problemId.value)
+    await store.fetchAllList()
   } catch {
     message.error('加载题解列表失败')
   }
 }
 
-// 切换排序
-async function handleSortChange(sort: 'like' | 'time'): Promise<void> {
-  await store.changeSort(sort)
+// ==================== 搜索 ====================
+
+function handleSearch(): void {
+  store.fetchAllList(searchKeyword.value.trim() || undefined)
 }
 
-// 切换分页
+function handleClearSearch(): void {
+  searchKeyword.value = ''
+  store.fetchAllList(undefined)
+}
+
+// ==================== 排序 / 分页 ====================
+
+async function handleSortChange(sort: 'like' | 'time'): Promise<void> {
+  await store.changeAllSort(sort)
+}
+
 async function handlePageChange(page: number): Promise<void> {
-  await store.changePage(page)
+  await store.changeAllPage(page)
 }
 
 // ==================== 导航 ====================
@@ -56,8 +69,8 @@ function goToDetail(id: number): void {
   router.push(`/solution/${id}`)
 }
 
-function goToProblem(): void {
-  router.push(`/problem/${problemId.value}`)
+function goToProblem(problemId: number): void {
+  router.push(`/problem/${problemId}`)
 }
 
 function handlePublish(): void {
@@ -71,35 +84,20 @@ function handlePublish(): void {
 // ==================== 生命周期 ====================
 
 onMounted(loadList)
-
-// 当路由 problemId 变化时重新加载
-watch(problemId, () => {
-  if (problemId.value) loadList()
-})
 </script>
 
 <template>
-  <div class="solution-list-page container">
+  <div class="plaza-page container">
     <!-- ==================== 页面头部 ==================== -->
     <div class="page-header">
       <div class="page-header-top">
         <div class="page-header-left">
-          <NButton
-            text
-            @click="goToProblem"
-            class="back-btn"
-          >
-            <template #icon>
-              <NIcon><ArrowBack /></NIcon>
-            </template>
-            返回题目
-          </NButton>
-          <h1 class="page-title">题解列表</h1>
+          <h1 class="page-title">题解广场</h1>
           <span
-            v-if="store.total > 0"
+            v-if="store.allTotal > 0"
             class="page-count"
           >
-            共 {{ store.total }} 篇题解
+            共 {{ store.allTotal }} 篇题解
           </span>
         </div>
         <NButton
@@ -114,58 +112,94 @@ watch(problemId, () => {
         </NButton>
       </div>
 
-      <!-- 排序栏 -->
-      <div class="sort-bar">
-        <span class="sort-label">排序：</span>
-        <NRadioGroup
-          :value="store.filters.sort"
-          size="small"
-          @update:value="(v: 'like' | 'time') => handleSortChange(v)"
-        >
-          <NRadioButton
-            v-for="opt in sortOptions"
-            :key="opt.value"
-            :value="opt.value"
-            :label="opt.label"
-          />
-        </NRadioGroup>
+      <!-- 搜索 + 排序栏 -->
+      <div class="toolbar">
+        <div class="search-bar">
+          <NInputGroup>
+            <NInput
+              v-model:value="searchKeyword"
+              placeholder="搜索题解标题、题目名称、作者..."
+              clearable
+              :style="{ width: '320px' }"
+              @keyup.enter="handleSearch"
+              @clear="handleClearSearch"
+            >
+              <template #prefix>
+                <NIcon><SearchOutline /></NIcon>
+              </template>
+            </NInput>
+            <NButton
+              type="primary"
+              @click="handleSearch"
+            >
+              搜索
+            </NButton>
+          </NInputGroup>
+        </div>
+
+        <div class="sort-bar">
+          <span class="sort-label">排序：</span>
+          <NRadioGroup
+            :value="store.allFilters.sort"
+            size="small"
+            @update:value="(v: 'like' | 'time') => handleSortChange(v)"
+          >
+            <NRadioButton
+              v-for="opt in sortOptions"
+              :key="opt.value"
+              :value="opt.value"
+              :label="opt.label"
+            />
+          </NRadioGroup>
+        </div>
       </div>
     </div>
 
     <!-- ==================== 加载状态 ==================== -->
-    <NSpin :show="store.loading">
-      <!-- 题解列表 -->
+    <NSpin :show="store.allLoading">
+      <!-- 题解卡片列表 -->
       <div
-        v-if="store.list.length > 0"
+        v-if="store.allList.length > 0"
         class="solution-list"
       >
         <article
-          v-for="sol in store.list"
+          v-for="sol in store.allList"
           :key="sol.id"
           class="solution-card card"
           @click="goToDetail(sol.id)"
         >
-          <div class="solution-card-body">
-            <div class="solution-card-left">
-              <UserAvatar
-                :avatar-url="sol.author.avatarUrl"
-                :username="sol.author.username"
-                size="medium"
-              />
-            </div>
-            <div class="solution-card-content">
+          <div class="card-left">
+            <UserAvatar
+              :avatar-url="sol.author.avatarUrl"
+              :username="sol.author.username"
+              size="medium"
+            />
+          </div>
+
+          <div class="card-body">
+            <div class="card-body-top">
               <h3 class="solution-title">{{ sol.title }}</h3>
-              <p class="solution-summary">{{ sol.summary }}</p>
-              <div class="solution-meta">
-                <span class="solution-author">{{ sol.author.username }}</span>
-                <span class="meta-divider">·</span>
-                <span class="solution-time">{{ formatDateTime(sol.createdAt) }}</span>
-                <span class="meta-divider">·</span>
-                <span class="solution-likes">
-                  <NIcon size="14"><ThumbsUpOutline /></NIcon>
-                  {{ sol.likeCount }}
-                </span>
+              <div class="solution-likes">
+                <NIcon size="16"><ThumbsUpOutline /></NIcon>
+                <span>{{ sol.likeCount }}</span>
               </div>
+            </div>
+
+            <p class="solution-summary">{{ sol.summary }}</p>
+
+            <div class="solution-meta">
+              <span class="solution-author">{{ sol.author.username }}</span>
+              <span class="meta-divider">·</span>
+              <NTag
+                size="tiny"
+                :bordered="false"
+                @click.stop="goToProblem(sol.problemId)"
+                class="problem-tag"
+              >
+                {{ sol.problemTitle }}
+              </NTag>
+              <span class="meta-divider">·</span>
+              <span class="solution-time">{{ formatDateTime(sol.createdAt) }}</span>
             </div>
           </div>
         </article>
@@ -173,28 +207,21 @@ watch(problemId, () => {
 
       <!-- 空状态 -->
       <NEmpty
-        v-else-if="!store.loading"
-        description="暂无题解，来做第一个分享的人吧！"
-        class="empty-state"
-      />
-
-      <!-- 错误状态 -->
-      <NEmpty
-        v-if="store.error && !store.loading"
-        :description="store.error"
+        v-else-if="!store.allLoading"
+        :description="store.allFilters.keyword ? '未找到匹配的题解' : '暂无题解，来做第一个分享的人吧！'"
         class="empty-state"
       />
     </NSpin>
 
     <!-- ==================== 分页 ==================== -->
     <div
-      v-if="store.totalPages > 1"
+      v-if="store.allTotalPages > 1"
       class="pagination-wrapper"
     >
       <NPagination
-        :page="store.filters.page"
-        :page-size="store.filters.size"
-        :item-count="store.total"
+        :page="store.allFilters.page"
+        :page-size="store.allFilters.size"
+        :item-count="store.allTotal"
         :page-slot="7"
         show-quick-jumper
         @update:page="handlePageChange"
@@ -204,7 +231,7 @@ watch(problemId, () => {
 </template>
 
 <style scoped>
-.solution-list-page {
+.plaza-page {
   padding-top: var(--gap-xl);
   padding-bottom: var(--gap-xl);
 }
@@ -224,7 +251,7 @@ watch(problemId, () => {
 
 .page-header-left {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: var(--gap-md);
   flex-wrap: wrap;
 }
@@ -241,22 +268,31 @@ watch(problemId, () => {
   color: var(--text-muted);
 }
 
-.back-btn {
-  font-size: 0.9rem;
-}
-
 .publish-btn {
   flex-shrink: 0;
 }
 
-/* ==================== 排序栏 ==================== */
+/* ==================== 工具栏 ==================== */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-md);
+  margin-top: var(--gap-md);
+  padding: var(--gap-sm) 0;
+  border-bottom: 1px solid #f0f0f0;
+  flex-wrap: wrap;
+}
+
+.search-bar {
+  flex-shrink: 0;
+}
+
 .sort-bar {
   display: flex;
   align-items: center;
   gap: var(--gap-sm);
-  margin-top: var(--gap-md);
-  padding: var(--gap-sm) 0;
-  border-bottom: 1px solid #f0f0f0;
+  flex-shrink: 0;
 }
 
 .sort-label {
@@ -275,6 +311,8 @@ watch(problemId, () => {
   cursor: pointer;
   transition: transform 0.15s, box-shadow 0.15s;
   padding: var(--gap-md);
+  display: flex;
+  gap: var(--gap-md);
 }
 
 .solution-card:hover {
@@ -282,18 +320,23 @@ watch(problemId, () => {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-.solution-card-body {
-  display: flex;
-  gap: var(--gap-md);
-  align-items: flex-start;
+.card-left {
+  flex-shrink: 0;
 }
 
-.solution-card-content {
+.card-body {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+.card-body-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--gap-sm);
 }
 
 .solution-title {
@@ -302,11 +345,22 @@ watch(problemId, () => {
   color: var(--text-primary);
   margin: 0;
   line-height: 1.4;
+  flex: 1;
+  min-width: 0;
 
   /* 单行省略 */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.solution-likes {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
 }
 
 .solution-summary {
@@ -328,7 +382,7 @@ watch(problemId, () => {
   gap: 4px;
   font-size: 0.85rem;
   color: var(--text-muted);
-  margin-top: 2px;
+  flex-wrap: wrap;
 }
 
 .meta-divider {
@@ -336,13 +390,16 @@ watch(problemId, () => {
   user-select: none;
 }
 
-.solution-likes {
-  display: flex;
-  align-items: center;
-  gap: 2px;
+.problem-tag {
+  cursor: pointer;
+  font-size: 0.8rem;
 }
 
-/* ==================== 空状态 / 错误 ==================== */
+.problem-tag:hover {
+  color: var(--color-primary);
+}
+
+/* ==================== 空状态 ==================== */
 .empty-state {
   margin-top: var(--gap-xl);
 }
@@ -356,17 +413,18 @@ watch(problemId, () => {
 
 /* ==================== 响应式 ==================== */
 @media (max-width: 768px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-bar .n-input {
+    width: 100% !important;
+  }
+
   .page-header-top {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .publish-btn {
-    width: 100%;
-  }
-
-  .solution-card-body {
-    gap: var(--gap-sm);
   }
 }
 </style>

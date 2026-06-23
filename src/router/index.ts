@@ -24,6 +24,11 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../views/SolutionListView.vue'),
   },
   {
+    path: '/solution',
+    name: 'solution-plaza',
+    component: () => import('../views/SolutionPlazaView.vue'),
+  },
+  {
     path: '/solution/:id(\\d+)',
     name: 'solution-detail',
     component: () => import('../views/SolutionDetailView.vue'),

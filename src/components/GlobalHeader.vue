@@ -16,14 +16,15 @@ const menuOptions = [
   { label: () => h(RouterLink, { to: '/' }, { default: () => '首页' }), key: 'home' },
   { label: () => h(RouterLink, { to: '/problem' }, { default: () => '题库' }), key: 'problem-list' },
   { label: () => h(RouterLink, { to: '/contest' }, { default: () => '比赛' }), key: 'contest-list' },
-  { label: () => h(RouterLink, { to: '/problem/1001/solution' }, { default: () => '题解' }), key: 'solution' },
+  { label: () => h(RouterLink, { to: '/solution' }, { default: () => '题解' }), key: 'solution' },
 ]
 
 // 动态计算当前激活的菜单项
 const activeKey = computed(() => {
   const name = route.name as string
   if (['home'].includes(name)) return 'home'
-  if (['problem-list', 'problem-detail', 'solution-list'].includes(name)) return 'problem-list'
+  if (['problem-list', 'problem-detail'].includes(name)) return 'problem-list'
+  if (['solution-plaza', 'solution-list', 'solution-detail'].includes(name)) return 'solution'
   if (['contest-list', 'contest-detail'].includes(name)) return 'contest-list'
   return 'home'
 })
