@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { h, computed } from 'vue'
-import { NLayoutHeader, NMenu, NButton, NAvatar, NDropdown, NBadge, NIcon } from 'naive-ui'
+import { NLayoutHeader, NMenu, NButton, NAvatar, NDropdown, NBadge, NIcon, NSwitch } from 'naive-ui'
 import { useRouter, useRoute, RouterLink } from 'vue-router'
-import { NotificationsOutline } from '@vicons/ionicons5'
+import { NotificationsOutline, SunnyOutline, MoonOutline } from '@vicons/ionicons5'
 import { useAuthStore } from '../stores/auth'
+import { useThemeStore } from '../stores/theme'
 import type { DropdownOption } from 'naive-ui'
 
 const router = useRouter()
 const route = useRoute()
 const auth = useAuthStore()
+const theme = useThemeStore()
 
 const menuOptions = [
   { label: () => h(RouterLink, { to: '/' }, { default: () => '首页' }), key: 'home' },
@@ -68,6 +70,20 @@ function handleNotification(): void {
         />
       </div>
       <div class="header-right">
+        <!-- 主题切换 -->
+        <div class="theme-toggle">
+          <NIcon size="18" :color="theme.mode === 'dark' ? '#f0c040' : '#909399'">
+            <MoonOutline v-if="theme.mode === 'dark'" />
+            <SunnyOutline v-else />
+          </NIcon>
+          <NSwitch
+            :value="theme.mode === 'dark'"
+            size="small"
+            @update:value="(v: boolean) => theme.setMode(v ? 'dark' : 'light')"
+            aria-label="切换深色模式"
+          />
+        </div>
+
         <template v-if="auth.isLoggedIn">
           <!-- 消息通知 -->
           <NBadge :value="0" :max="99" :show="false">
@@ -153,6 +169,15 @@ function handleNotification(): void {
   display: flex;
   align-items: center;
   gap: var(--gap-sm);
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-right: var(--gap-sm);
+  margin-right: var(--gap-sm);
+  border-right: 1px solid var(--text-muted);
 }
 
 .user-avatar-wrap {

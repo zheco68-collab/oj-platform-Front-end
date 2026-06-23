@@ -7,12 +7,15 @@ import { java } from '@codemirror/lang-java'
 import { go } from '@codemirror/lang-go'
 import { oneDark } from '@codemirror/theme-one-dark'
 import type { Extension } from '@codemirror/state'
+import { useThemeStore } from '../stores/theme'
 
 const model = defineModel<string>({ default: '' })
 
 const props = defineProps<{
   language?: string
 }>()
+
+const themeStore = useThemeStore()
 
 const langMap: Record<string, () => Extension> = {
   C: cpp,
@@ -26,8 +29,17 @@ const langMap: Record<string, () => Extension> = {
 
 const extensions = computed<Extension[]>(() => {
   const langExt = langMap[props.language || '']
-  return [oneDark, ...(langExt ? [langExt()] : [])]
+  const exts: Extension[] = []
+  if (themeStore.mode === 'dark') {
+    exts.push(oneDark)
+  }
+  if (langExt) {
+    exts.push(langExt())
+  }
+  return exts
 })
+
+const themeClass = computed(() => themeStore.mode === 'dark' ? 'cm-dark' : 'cm-light')
 </script>
 
 <template>
@@ -37,7 +49,7 @@ const extensions = computed<Extension[]>(() => {
     :style="{ height: '100%' }"
     :indent-with-tab="false"
     :tab-size="4"
-    class="cm-editor-wrap"
+    :class="['cm-editor-wrap', themeClass]"
     @update:model-value="(v: string) => model = v"
   />
 </template>
@@ -62,5 +74,31 @@ const extensions = computed<Extension[]>(() => {
   font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
   font-size: 0.875rem;
   line-height: 1.65;
+}
+
+/* 浅色模式 */
+.cm-light {
+  background: #ffffff;
+  border: 1px solid #d0d7de;
+}
+
+.cm-light :deep(.cm-editor) {
+  background: #ffffff;
+}
+
+.cm-light :deep(.cm-gutters) {
+  background: #f6f8fa;
+  border-right-color: #d0d7de;
+  color: #656d76;
+}
+
+.cm-light :deep(.cm-activeLineGutter) {
+  background: #e8f0fe;
+}
+
+/* 深色模式 */
+.cm-dark {
+  background: #1e1e1e;
+  border: 1px solid #3c3c3c;
 }
 </style>

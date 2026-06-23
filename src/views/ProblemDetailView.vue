@@ -437,8 +437,8 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: var(--gap-xs) var(--gap-sm);
-  background: #f6f8fa;
-  border: 1px solid #e1e4e8;
+  background: var(--sample-label-bg, #f6f8fa);
+  border: 1px solid var(--sample-border, #e1e4e8);
   border-bottom: none;
   border-radius: var(--border-radius) var(--border-radius) 0 0;
   font-size: 0.875rem;
@@ -452,8 +452,8 @@ onUnmounted(() => {
 .sample-content {
   margin: 0;
   padding: var(--gap-sm) var(--gap-md);
-  background: #fafbfc;
-  border: 1px solid #e1e4e8;
+  background: var(--sample-bg, #fafbfc);
+  border: 1px solid var(--sample-border, #e1e4e8);
   border-radius: 0 0 var(--border-radius) var(--border-radius);
   font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
   font-size: 0.875rem;
@@ -462,6 +462,7 @@ onUnmounted(() => {
   word-break: break-all;
   max-height: 300px;
   overflow-y: auto;
+  color: var(--sample-text, inherit);
 }
 
 /* 提交区 */
@@ -500,14 +501,14 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: var(--gap-xs) var(--gap-sm);
-  border: 1px solid #eee;
+  border: 1px solid var(--sample-border, #eee);
   border-radius: var(--border-radius);
   font-size: 0.8125rem;
-  background: #fafbfc;
+  background: var(--sample-bg, #fafbfc);
 }
 
 .submission-item:hover {
-  background: #f0f7ff;
+  background: var(--sample-label-bg, #f0f7ff);
 }
 
 .submission-item-left {
@@ -525,7 +526,7 @@ onUnmounted(() => {
 .submission-lang {
   color: var(--text-secondary);
   padding: 0 4px;
-  background: #eee;
+  background: var(--sample-label-bg, #eee);
   border-radius: 3px;
   font-size: 0.75rem;
 }
