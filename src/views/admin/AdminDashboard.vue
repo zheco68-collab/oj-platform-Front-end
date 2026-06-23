@@ -10,6 +10,7 @@ import {
   SettingsOutline,
 } from '@vicons/ionicons5'
 import type { Component } from 'vue'
+import { useRouter } from 'vue-router'
 import { mockAdminOverview, mockAdminEntries } from '../../api/mock/admin'
 
 // ==================== 图标名 → 组件映射 ====================
@@ -25,6 +26,24 @@ const iconMap: Record<string, Component> = {
 
 function resolveIcon(name: string): Component {
   return iconMap[name] ?? SettingsOutline
+}
+
+// ==================== 路由 ====================
+
+const router = useRouter()
+
+const entryRouteMap: Record<string, string> = {
+  problems: '/admin/problems',
+  contests: '/admin/contests',
+  announcements: '/admin/announcements',
+  users: '/admin/users',
+}
+
+function goToEntry(key: string): void {
+  const path = entryRouteMap[key]
+  if (path) {
+    router.push(path)
+  }
 }
 
 // ==================== 数据 ====================
@@ -114,6 +133,7 @@ const entries = mockAdminEntries
               <NButton
                 text
                 :style="{ color: entry.color }"
+                @click="goToEntry(entry.key)"
               >
                 进入管理
                 <NIcon size="14" style="margin-left:4px">

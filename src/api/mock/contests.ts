@@ -1,7 +1,8 @@
 import type { Contest, ContestDetail, ContestProblem, RankRecord, Submission } from '../../types'
 import contestsData from './data/contests.json'
 
-export const mockContests: Contest[] = contestsData as Contest[]
+// 使用可变副本，使 Admin CRUD 可操作
+export const mockContests: Contest[] = [...(contestsData as Contest[])]
 
 // ==================== 比赛详情 Mock ====================
 

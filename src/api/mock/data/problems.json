@@ -12,7 +12,8 @@
       "memoryLimit": 128,
       "acceptedCount": 8520,
       "submissionCount": 10200,
-      "status": "AC"
+      "status": "AC",
+      "isPublic": true
     },
     {
       "id": 1002,
@@ -27,7 +28,8 @@
       "memoryLimit": 128,
       "acceptedCount": 7200,
       "submissionCount": 9500,
-      "status": "AC"
+      "status": "AC",
+      "isPublic": true
     },
     {
       "id": 1003,
@@ -41,7 +43,8 @@
       "memoryLimit": 64,
       "acceptedCount": 6100,
       "submissionCount": 7800,
-      "status": "ATTEMPTED"
+      "status": "ATTEMPTED",
+      "isPublic": true
     },
     {
       "id": 1004,
@@ -55,7 +58,8 @@
       "memoryLimit": 128,
       "acceptedCount": 5800,
       "submissionCount": 8200,
-      "status": "NONE"
+      "status": "NONE",
+      "isPublic": true
     },
     {
       "id": 1005,
@@ -69,7 +73,8 @@
       "memoryLimit": 128,
       "acceptedCount": 4500,
       "submissionCount": 5600,
-      "status": "AC"
+      "status": "AC",
+      "isPublic": true
     },
     {
       "id": 1006,
@@ -84,7 +89,8 @@
       "memoryLimit": 128,
       "acceptedCount": 5200,
       "submissionCount": 6900,
-      "status": "AC"
+      "status": "AC",
+      "isPublic": true
     },
     {
       "id": 1007,
@@ -98,7 +104,8 @@
       "memoryLimit": 128,
       "acceptedCount": 4800,
       "submissionCount": 6200,
-      "status": "ATTEMPTED"
+      "status": "ATTEMPTED",
+      "isPublic": true
     },
     {
       "id": 1008,
@@ -113,7 +120,8 @@
       "memoryLimit": 256,
       "acceptedCount": 4300,
       "submissionCount": 5800,
-      "status": "NONE"
+      "status": "NONE",
+      "isPublic": true
     },
     {
       "id": 1009,
@@ -128,7 +136,8 @@
       "memoryLimit": 128,
       "acceptedCount": 5100,
       "submissionCount": 6100,
-      "status": "AC"
+      "status": "AC",
+      "isPublic": true
     },
     {
       "id": 1010,
@@ -142,7 +151,8 @@
       "memoryLimit": 256,
       "acceptedCount": 3800,
       "submissionCount": 5500,
-      "status": "NONE"
+      "status": "NONE",
+      "isPublic": true
     },
     {
       "id": 1011,
@@ -157,7 +167,8 @@
       "memoryLimit": 128,
       "acceptedCount": 3200,
       "submissionCount": 4800,
-      "status": "ATTEMPTED"
+      "status": "ATTEMPTED",
+      "isPublic": true
     },
     {
       "id": 1012,
@@ -171,7 +182,8 @@
       "memoryLimit": 128,
       "acceptedCount": 4100,
       "submissionCount": 5200,
-      "status": "AC"
+      "status": "AC",
+      "isPublic": true
     },
     {
       "id": 1013,
@@ -185,7 +197,8 @@
       "memoryLimit": 256,
       "acceptedCount": 3600,
       "submissionCount": 4400,
-      "status": "NONE"
+      "status": "NONE",
+      "isPublic": true
     },
     {
       "id": 1014,
@@ -199,7 +212,8 @@
       "memoryLimit": 256,
       "acceptedCount": 2900,
       "submissionCount": 3800,
-      "status": "ATTEMPTED"
+      "status": "ATTEMPTED",
+      "isPublic": true
     },
     {
       "id": 1015,
@@ -213,7 +227,8 @@
       "memoryLimit": 128,
       "acceptedCount": 2500,
       "submissionCount": 3500,
-      "status": "AC"
+      "status": "AC",
+      "isPublic": true
     },
     {
       "id": 1016,
@@ -227,7 +242,8 @@
       "memoryLimit": 256,
       "acceptedCount": 2200,
       "submissionCount": 3600,
-      "status": "NONE"
+      "status": "NONE",
+      "isPublic": true
     },
     {
       "id": 1017,
@@ -241,7 +257,8 @@
       "memoryLimit": 256,
       "acceptedCount": 2700,
       "submissionCount": 3400,
-      "status": "AC"
+      "status": "AC",
+      "isPublic": true
     },
     {
       "id": 1018,
@@ -255,7 +272,8 @@
       "memoryLimit": 128,
       "acceptedCount": 3500,
       "submissionCount": 4500,
-      "status": "ATTEMPTED"
+      "status": "ATTEMPTED",
+      "isPublic": true
     },
     {
       "id": 1019,
@@ -269,7 +287,8 @@
       "memoryLimit": 256,
       "acceptedCount": 1800,
       "submissionCount": 3100,
-      "status": "AC"
+      "status": "AC",
+      "isPublic": true
     },
     {
       "id": 1020,
@@ -283,7 +302,8 @@
       "memoryLimit": 512,
       "acceptedCount": 1200,
       "submissionCount": 2500,
-      "status": "NONE"
+      "status": "NONE",
+      "isPublic": true
     },
     {
       "id": 1021,
@@ -298,7 +318,8 @@
       "memoryLimit": 512,
       "acceptedCount": 950,
       "submissionCount": 2200,
-      "status": "ATTEMPTED"
+      "status": "ATTEMPTED",
+      "isPublic": true
     },
     {
       "id": 1022,
@@ -313,7 +334,8 @@
       "memoryLimit": 256,
       "acceptedCount": 1100,
       "submissionCount": 2000,
-      "status": "AC"
+      "status": "AC",
+      "isPublic": true
     },
     {
       "id": 1023,
@@ -328,7 +350,8 @@
       "memoryLimit": 256,
       "acceptedCount": 1500,
       "submissionCount": 2400,
-      "status": "NONE"
+      "status": "NONE",
+      "isPublic": true
     },
     {
       "id": 1024,
@@ -342,7 +365,8 @@
       "memoryLimit": 512,
       "acceptedCount": 600,
       "submissionCount": 1800,
-      "status": "ATTEMPTED"
+      "status": "ATTEMPTED",
+      "isPublic": true
     },
     {
       "id": 1025,
@@ -356,7 +380,8 @@
       "memoryLimit": 512,
       "acceptedCount": 350,
       "submissionCount": 1200,
-      "status": "NONE"
+      "status": "NONE",
+      "isPublic": true
     },
     {
       "id": 1026,
@@ -370,7 +395,8 @@
       "memoryLimit": 512,
       "acceptedCount": 480,
       "submissionCount": 1100,
-      "status": "AC"
+      "status": "AC",
+      "isPublic": true
     },
     {
       "id": 1027,
@@ -385,7 +411,8 @@
       "memoryLimit": 256,
       "acceptedCount": 2600,
       "submissionCount": 3200,
-      "status": "NONE"
+      "status": "NONE",
+      "isPublic": true
     }
   ],
   "problemDetailMap": {
@@ -418,7 +445,8 @@
           "output": "2000000000"
         }
       ],
-      "hint": "## 提示\n\n注意数据范围：\\(-10^9 \\leq a, b \\leq 10^9\\)，在 C++ 中可以使用 `int` 类型，但 \\(a+b\\) 的结果可能达到 \\(2 \\times 10^9\\)，需要使用 `long long` 类型。"
+      "hint": "## 提示\n\n注意数据范围：\\(-10^9 \\leq a, b \\leq 10^9\\)，在 C++ 中可以使用 `int` 类型，但 \\(a+b\\) 的结果可能达到 \\(2 \\times 10^9\\)，需要使用 `long long` 类型。",
+      "isPublic": true
     },
     "1002": {
       "id": 1002,
@@ -450,7 +478,8 @@
           "output": "55"
         }
       ],
-      "hint": "## 提示\n\n可以使用递推或矩阵快速幂。递推时间复杂度为 \\(O(n)\\)，矩阵快速幂为 \\(O(\\log n)\\)。注意取模。"
+      "hint": "## 提示\n\n可以使用递推或矩阵快速幂。递推时间复杂度为 \\(O(n)\\)，矩阵快速幂为 \\(O(\\log n)\\)。注意取模。",
+      "isPublic": true
     },
     "1003": {
       "id": 1003,
@@ -481,7 +510,8 @@
           "output": "1"
         }
       ],
-      "hint": "## 提示\n\n使用欧几里得算法（辗转相除法）：\n\n\\`\\`\\`cpp\nint gcd(int a, int b) {\n    return b == 0 ? a : gcd(b, a % b);\n}\n\\`\\`\\`\n\n时间复杂度为 \\(O(\\log \\min(a, b))\\)。注意需要使用 64 位整数。"
+      "hint": "## 提示\n\n使用欧几里得算法（辗转相除法）：\n\n\\`\\`\\`cpp\nint gcd(int a, int b) {\n    return b == 0 ? a : gcd(b, a % b);\n}\n\\`\\`\\`\n\n时间复杂度为 \\(O(\\log \\min(a, b))\\)。注意需要使用 64 位整数。",
+      "isPublic": true
     },
     "1004": {
       "id": 1004,
@@ -508,7 +538,8 @@
           "output": "-10 0 20"
         }
       ],
-      "hint": "## 提示\n\n冒泡排序的时间复杂度为 \\(O(n^2)\\)。对于本题 \\(n \\leq 1000\\) 的数据范围，\\(O(n^2)\\) 算法可以通过。\n\n实际工程中请使用语言内置的排序函数。"
+      "hint": "## 提示\n\n冒泡排序的时间复杂度为 \\(O(n^2)\\)。对于本题 \\(n \\leq 1000\\) 的数据范围，\\(O(n^2)\\) 算法可以通过。\n\n实际工程中请使用语言内置的排序函数。",
+      "isPublic": true
     },
     "1005": {
       "id": 1005,
@@ -539,7 +570,8 @@
           "output": "3"
         }
       ],
-      "hint": "## 提示\n\n注意除法的向下取整行为。在 C++ 中整数除法自动向下取整（向零取整），但 Python 中 `//` 是向下取整（floor），对负数需注意。"
+      "hint": "## 提示\n\n注意除法的向下取整行为。在 C++ 中整数除法自动向下取整（向零取整），但 Python 中 `//` 是向下取整（floor），对负数需注意。",
+      "isPublic": true
     },
     "1006": {
       "id": 1006,
@@ -571,7 +603,8 @@
           "output": "15"
         }
       ],
-      "hint": "## 提示\n\n最少步数为 \\(2^n - 1\\)。\n\n使用递归求解：要将 \\(n\\) 个盘子从 A 移到 C：\n1. 先将 \\(n-1\\) 个盘子从 A 移到 B（辅助柱）\n2. 将第 \\(n\\) 个盘子从 A 移到 C\n3. 再将 \\(n-1\\) 个盘子从 B 移到 C"
+      "hint": "## 提示\n\n最少步数为 \\(2^n - 1\\)。\n\n使用递归求解：要将 \\(n\\) 个盘子从 A 移到 C：\n1. 先将 \\(n-1\\) 个盘子从 A 移到 B（辅助柱）\n2. 将第 \\(n\\) 个盘子从 A 移到 C\n3. 再将 \\(n-1\\) 个盘子从 B 移到 C",
+      "isPublic": true
     },
     "1007": {
       "id": 1007,
@@ -594,7 +627,8 @@
           "output": "2\n-1\n4"
         }
       ],
-      "hint": "## 提示\n\n使用二分查找算法，时间复杂度为 \\(O(q \\log n)\\)。\n\n\\`\\`\\`cpp\nint l = 0, r = n - 1;\nwhile (l <= r) {\n    int mid = (l + r) / 2;\n    if (a[mid] == x) return mid + 1;\n    else if (a[mid] < x) l = mid + 1;\n    else r = mid - 1;\n}\nreturn -1;\n\\`\\`\\`\n"
+      "hint": "## 提示\n\n使用二分查找算法，时间复杂度为 \\(O(q \\log n)\\)。\n\n\\`\\`\\`cpp\nint l = 0, r = n - 1;\nwhile (l <= r) {\n    int mid = (l + r) / 2;\n    if (a[mid] == x) return mid + 1;\n    else if (a[mid] < x) l = mid + 1;\n    else r = mid - 1;\n}\nreturn -1;\n\\`\\`\\`\n",
+      "isPublic": true
     },
     "1008": {
       "id": 1008,
@@ -622,7 +656,8 @@
           "output": "-2 -1 0 3 3 5"
         }
       ],
-      "hint": "## 提示\n\n可以选择数组中间元素作为 pivot，以避免最坏情况的 \\(O(n^2)\\)。\n\n注意 \\(n \\leq 10^5\\)，使用 \\(O(n \\log n)\\) 的排序算法均可通过。"
+      "hint": "## 提示\n\n可以选择数组中间元素作为 pivot，以避免最坏情况的 \\(O(n^2)\\)。\n\n注意 \\(n \\leq 10^5\\)，使用 \\(O(n \\log n)\\) 的排序算法均可通过。",
+      "isPublic": true
     },
     "1009": {
       "id": 1009,
@@ -658,7 +693,8 @@
           "output": "NO"
         }
       ],
-      "hint": "## 提示\n\n使用栈（stack）数据结构：\n- 遇到左括号时入栈。\n- 遇到右括号时，检查栈顶是否匹配的左括号。\n- 最后检查栈是否为空。\n\n时间复杂度 \\(O(n)\\)，空间复杂度 \\(O(n)\\)。"
+      "hint": "## 提示\n\n使用栈（stack）数据结构：\n- 遇到左括号时入栈。\n- 遇到右括号时，检查栈顶是否匹配的左括号。\n- 最后检查栈是否为空。\n\n时间复杂度 \\(O(n)\\)，空间复杂度 \\(O(n)\\)。",
+      "isPublic": true
     },
     "1010": {
       "id": 1010,
@@ -685,7 +721,8 @@
           "output": "-1"
         }
       ],
-      "hint": "## 提示\n\n使用 Dijkstra 算法配合优先队列（堆优化），时间复杂度 \\(O(m \\log n)\\)。\n\n由于所有边权为正，不需要使用 Bellman-Ford 或 SPFA。"
+      "hint": "## 提示\n\n使用 Dijkstra 算法配合优先队列（堆优化），时间复杂度 \\(O(m \\log n)\\)。\n\n由于所有边权为正，不需要使用 Bellman-Ford 或 SPFA。",
+      "isPublic": true
     },
     "1011": {
       "id": 1011,
@@ -713,7 +750,8 @@
           "output": "5"
         }
       ],
-      "hint": "## 提示\n\n经典的动态规划问题。定义 \\(dp[i][j]\\) 为 \\(s[0..i-1]\\) 转换为 \\(t[0..j-1]\\) 的最少操作数。\n\n状态转移方程：\n\n$$\ndp[i][j] = \\min \\begin{cases}\ndp[i-1][j] + 1 & \\text{删除} \\\\\ndp[i][j-1] + 1 & \\text{插入} \\\\\ndp[i-1][j-1] + (s[i-1] \\neq t[j-1]) & \\text{替换}\n\\end{cases}\n$$\n\n时间复杂度 \\(O(|s| \\cdot |t|)\\)。"
+      "hint": "## 提示\n\n经典的动态规划问题。定义 \\(dp[i][j]\\) 为 \\(s[0..i-1]\\) 转换为 \\(t[0..j-1]\\) 的最少操作数。\n\n状态转移方程：\n\n$$\ndp[i][j] = \\min \\begin{cases}\ndp[i-1][j] + 1 & \\text{删除} \\\\\ndp[i][j-1] + 1 & \\text{插入} \\\\\ndp[i-1][j-1] + (s[i-1] \\neq t[j-1]) & \\text{替换}\n\\end{cases}\n$$\n\n时间复杂度 \\(O(|s| \\cdot |t|)\\)。",
+      "isPublic": true
     },
     "1012": {
       "id": 1012,
@@ -740,7 +778,8 @@
           "output": "1"
         }
       ],
-      "hint": "## 提示\n\n### 方法一（\\(O(n \\log n)\\)）\n\n维护一个数组 \\(d\\)，其中 \\(d[k]\\) 表示长度为 \\(k\\) 的上升子序列的最小末尾值。遍历每个 \\(a_i\\)，在 \\(d\\) 中二分查找第一个 \\(\\geq a_i\\) 的位置并更新。\n\n### 方法二（\\(O(n^2)```）\n\n定义 \\(dp[i]\\) 为以 \\(a_i\\) 结尾的 LIS 长度，适用于 \\(n \\leq 5000\\)。"
+      "hint": "## 提示\n\n### 方法一（\\(O(n \\log n)\\)）\n\n维护一个数组 \\(d\\)，其中 \\(d[k]\\) 表示长度为 \\(k\\) 的上升子序列的最小末尾值。遍历每个 \\(a_i\\)，在 \\(d\\) 中二分查找第一个 \\(\\geq a_i\\) 的位置并更新。\n\n### 方法二（\\(O(n^2)```）\n\n定义 \\(dp[i]\\) 为以 \\(a_i\\) 结尾的 LIS 长度，适用于 \\(n \\leq 5000\\)。",
+      "isPublic": true
     },
     "1013": {
       "id": 1013,
@@ -763,7 +802,8 @@
           "output": "YES\nYES\nNO"
         }
       ],
-      "hint": "## 提示\n\n使用路径压缩和按秩合并优化：\n\n\\`\\`\\`cpp\nint find(int x) {\n    return parent[x] == x ? x : parent[x] = find(parent[x]);\n}\n\\`\\`\\`\n\n均摊时间复杂度约为 \\(O(\\alpha(n))\\)，其中 \\(\\alpha\\) 是反 Ackermann 函数。"
+      "hint": "## 提示\n\n使用路径压缩和按秩合并优化：\n\n\\`\\`\\`cpp\nint find(int x) {\n    return parent[x] == x ? x : parent[x] = find(parent[x]);\n}\n\\`\\`\\`\n\n均摊时间复杂度约为 \\(O(\\alpha(n))\\)，其中 \\(\\alpha\\) 是反 Ackermann 函数。",
+      "isPublic": true
     },
     "1014": {
       "id": 1014,
@@ -790,7 +830,8 @@
           "output": "-1"
         }
       ],
-      "hint": "## 提示\n\n使用 Kahn 算法（BFS）：\n1. 计算每个节点的入度。\n2. 将入度为 0 的节点加入队列。\n3. 每次取出队首节点，将其加入拓扑序，并将其所有邻接节点的入度减 1，如果入度变为 0 则入队。\n4. 如果拓扑序中节点数小于 \\(n\\)，说明存在环。\n\n时间复杂度 \\(O(n + m)\\)。"
+      "hint": "## 提示\n\n使用 Kahn 算法（BFS）：\n1. 计算每个节点的入度。\n2. 将入度为 0 的节点加入队列。\n3. 每次取出队首节点，将其加入拓扑序，并将其所有邻接节点的入度减 1，如果入度变为 0 则入队。\n4. 如果拓扑序中节点数小于 \\(n\\)，说明存在环。\n\n时间复杂度 \\(O(n + m)\\)。",
+      "isPublic": true
     },
     "1015": {
       "id": 1015,
@@ -817,7 +858,8 @@
           "output": "1\n2\n3\n4"
         }
       ],
-      "hint": "## 提示\n\nKMP 算法的核心是构建 \\(\\text{next}\\) 数组（部分匹配表），避免暴力匹配中的回溯。\n\n构建 \\(\\text{next}\\) 数组：对于模式串 \\(P\\)，\\(\\text{next}[i]\\) 表示 \\(P[0..i]\\) 的最长相等前后缀长度。\n\n时间复杂度 \\(O(|S| + |P|)\\)。"
+      "hint": "## 提示\n\nKMP 算法的核心是构建 \\(\\text{next}\\) 数组（部分匹配表），避免暴力匹配中的回溯。\n\n构建 \\(\\text{next}\\) 数组：对于模式串 \\(P\\)，\\(\\text{next}[i]\\) 表示 \\(P[0..i]\\) 的最长相等前后缀长度。\n\n时间复杂度 \\(O(|S| + |P|)\\)。",
+      "isPublic": true
     },
     "1016": {
       "id": 1016,
@@ -840,7 +882,8 @@
           "output": "6\n14\n15"
         }
       ],
-      "hint": "## 提示\n\n线段树每个节点存储对应区间的和。单点修改和区间查询的时间复杂度均为 \\(O(\\log n)\\)。\n\n线段树空间通常开到 \\(4n```以保证安全。"
+      "hint": "## 提示\n\n线段树每个节点存储对应区间的和。单点修改和区间查询的时间复杂度均为 \\(O(\\log n)\\)。\n\n线段树空间通常开到 \\(4n```以保证安全。",
+      "isPublic": true
     },
     "1017": {
       "id": 1017,
@@ -863,7 +906,8 @@
           "output": "7"
         }
       ],
-      "hint": "## 提示\n\n### Kruskal 算法\n\n1. 将所有边按权值排序。\n2. 使用并查集，从小到大添加不构成环的边。\n3. 添加 \\(n-1\\) 条边后得到 MST。\n\n时间复杂度 \\(O(m \\log m)\\)。"
+      "hint": "## 提示\n\n### Kruskal 算法\n\n1. 将所有边按权值排序。\n2. 使用并查集，从小到大添加不构成环的边。\n3. 添加 \\(n-1\\) 条边后得到 MST。\n\n时间复杂度 \\(O(m \\log m)\\)。",
+      "isPublic": true
     },
     "1018": {
       "id": 1018,
@@ -886,7 +930,8 @@
           "output": "7"
         }
       ],
-      "hint": "## 提示\n\n定义 \\(dp[j]\\) 为容量为 \\(j\\) 时能获得的最大价值。\n\n状态转移（倒序枚举容量）：\n\n\\`\\`\\`cpp\nfor (int i = 0; i < n; i++)\n    for (int j = W; j >= w[i]; j--)\n        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);\n\\`\\`\\`\n\n时间复杂度 \\(O(nW)\\)。"
+      "hint": "## 提示\n\n定义 \\(dp[j]\\) 为容量为 \\(j\\) 时能获得的最大价值。\n\n状态转移（倒序枚举容量）：\n\n\\`\\`\\`cpp\nfor (int i = 0; i < n; i++)\n    for (int j = W; j >= w[i]; j--)\n        dp[j] = max(dp[j], dp[j - w[i]] + v[i]);\n\\`\\`\\`\n\n时间复杂度 \\(O(nW)\\)。",
+      "isPublic": true
     },
     "1019": {
       "id": 1019,
@@ -909,7 +954,8 @@
           "output": "8.00"
         }
       ],
-      "hint": "## 提示\n\n### Andrew 算法（单调链）\n\n1. 对所有点按 x 坐标排序（x 相同则按 y）。\n2. 构建下凸壳：从左到右，维护一个\"向右转\"的栈。\n3. 构建上凸壳：从右到左，同理。\n4. 合并即为凸包。\n\n使用叉积判断转向：\n\n$$\n\\vec{AB} \\times \\vec{BC} = (B_x - A_x)(C_y - B_y) - (B_y - A_y)(C_x - B_x) > 0\n$$\n\n表示向左转（CCW）。\n\n时间复杂度 \\(O(n \\log n)\\)。"
+      "hint": "## 提示\n\n### Andrew 算法（单调链）\n\n1. 对所有点按 x 坐标排序（x 相同则按 y）。\n2. 构建下凸壳：从左到右，维护一个\"向右转\"的栈。\n3. 构建上凸壳：从右到左，同理。\n4. 合并即为凸包。\n\n使用叉积判断转向：\n\n$$\n\\vec{AB} \\times \\vec{BC} = (B_x - A_x)(C_y - B_y) - (B_y - A_y)(C_x - B_x) > 0\n$$\n\n表示向左转（CCW）。\n\n时间复杂度 \\(O(n \\log n)\\)。",
+      "isPublic": true
     },
     "1020": {
       "id": 1020,
@@ -932,7 +978,8 @@
           "output": "15"
         }
       ],
-      "hint": "## 提示\n\n### Dinic 算法\n\n1. BFS 构建分层图。\n2. DFS 在分层图上多路增广。\n3. 重复直到无法到达汇点。\n\n时间复杂度 \\(O(n^2 m)\\)，实际表现远优于该上界。\n\n### 最大流最小割定理\n\n最大流的值等于最小割的容量。"
+      "hint": "## 提示\n\n### Dinic 算法\n\n1. BFS 构建分层图。\n2. DFS 在分层图上多路增广。\n3. 重复直到无法到达汇点。\n\n时间复杂度 \\(O(n^2 m)\\)，实际表现远优于该上界。\n\n### 最大流最小割定理\n\n最大流的值等于最小割的容量。",
+      "isPublic": true
     },
     "1021": {
       "id": 1021,
@@ -956,7 +1003,8 @@
           "output": "9\n25\n19"
         }
       ],
-      "hint": "## 提示\n\n树链剖分的核心思想：\n1. 重链剖分：每个节点选择子树最大的子节点作为重儿子。\n2. DFS 序重标号：一条重链上的节点在 DFS 序中连续。\n3. 用线段树维护 DFS 序，路径操作可转化为 \\(O(\\log n)\\) 段区间操作。\n\n总时间复杂度 \\(O(n + m \\log^2 n)\\)。"
+      "hint": "## 提示\n\n树链剖分的核心思想：\n1. 重链剖分：每个节点选择子树最大的子节点作为重儿子。\n2. DFS 序重标号：一条重链上的节点在 DFS 序中连续。\n3. 用线段树维护 DFS 序，路径操作可转化为 \\(O(\\log n)\\) 段区间操作。\n\n总时间复杂度 \\(O(n + m \\log^2 n)\\)。",
+      "isPublic": true
     },
     "1022": {
       "id": 1022,
@@ -980,7 +1028,8 @@
           "output": "1\n2\n3\n3"
         }
       ],
-      "hint": "## 提示\n\n莫队算法是一种离线处理区间查询的算法：\n\n1. 将所有询问按 \\(\\frac{l}{B}\\) 分块（\\(B = \\sqrt{n}\\)）。\n2. 同一块内按 \\(r\\) 排序。\n3. 维护当前区间 \\([L, R]\\) 的答案，每次移动到目标区间 \\([l, r]\\)。\n\n时间复杂度 \\(O((n+q)\\sqrt{n})\\)。"
+      "hint": "## 提示\n\n莫队算法是一种离线处理区间查询的算法：\n\n1. 将所有询问按 \\(\\frac{l}{B}\\) 分块（\\(B = \\sqrt{n}\\)）。\n2. 同一块内按 \\(r\\) 排序。\n3. 维护当前区间 \\([L, R]\\) 的答案，每次移动到目标区间 \\([l, r]\\)。\n\n时间复杂度 \\(O((n+q)\\sqrt{n})\\)。",
+      "isPublic": true
     },
     "1023": {
       "id": 1023,
@@ -1004,7 +1053,8 @@
           "output": "80"
         }
       ],
-      "hint": "## 提示\n\n数位 DP 将数字视为字符串逐位处理：\n\n定义 \\(dp[pos][tight][prev]\\)：\n- \\(pos\\)：当前处理的位数（从高位到低位）。\n- \\(tight\\)：是否受上界限制。\n- \\(prev\\)：上一位数字（用于判断是否出现 62）。\n\n使用记忆化搜索实现。\n\n时间复杂度 \\(O(\\text{位数} \\times 10)\\)。"
+      "hint": "## 提示\n\n数位 DP 将数字视为字符串逐位处理：\n\n定义 \\(dp[pos][tight][prev]\\)：\n- \\(pos\\)：当前处理的位数（从高位到低位）。\n- \\(tight\\)：是否受上界限制。\n- \\(prev\\)：上一位数字（用于判断是否出现 62）。\n\n使用记忆化搜索实现。\n\n时间复杂度 \\(O(\\text{位数} \\times 10)\\)。",
+      "isPublic": true
     },
     "1024": {
       "id": 1024,
@@ -1031,7 +1081,8 @@
           "output": "NO\nYES"
         }
       ],
-      "hint": "## 提示\n\n后缀自动机是一个能接受字符串 \\(S\\) 所有子串的最小确定性有限自动机。\n\n构建 SAM 的时间复杂度为 \\(O(n)\\)，空间复杂度为 \\(O(n)\\)。\n\n查询子串：从初始状态出发，沿 \\(T\\) 的字符转移，能走完则 \\(T\\) 是子串。"
+      "hint": "## 提示\n\n后缀自动机是一个能接受字符串 \\(S\\) 所有子串的最小确定性有限自动机。\n\n构建 SAM 的时间复杂度为 \\(O(n)\\)，空间复杂度为 \\(O(n)\\)。\n\n查询子串：从初始状态出发，沿 \\(T\\) 的字符转移，能走完则 \\(T\\) 是子串。",
+      "isPublic": true
     },
     "1025": {
       "id": 1025,
@@ -1054,7 +1105,8 @@
           "output": "3\n11"
         }
       ],
-      "hint": "## 提示\n\nLCT 使用 Splay 维护实链（Preferred Path）：\n\n- **access(x)**：建立从根到 x 的实路径。\n- **makeroot(x)**：使 x 成为其所在树的根。\n- **findroot(x)**：找到 x 所在树的根。\n- **link(x, y)**：连接 x 和 y。\n- **cut(x, y)**：断开 x 和 y 之间的边。\n\n每个操作的时间复杂度为均摊 \\(O(\\log n)\\)。"
+      "hint": "## 提示\n\nLCT 使用 Splay 维护实链（Preferred Path）：\n\n- **access(x)**：建立从根到 x 的实路径。\n- **makeroot(x)**：使 x 成为其所在树的根。\n- **findroot(x)**：找到 x 所在树的根。\n- **link(x, y)**：连接 x 和 y。\n- **cut(x, y)**：断开 x 和 y 之间的边。\n\n每个操作的时间复杂度为均摊 \\(O(\\log n)\\)。",
+      "isPublic": true
     },
     "1026": {
       "id": 1026,
@@ -1077,7 +1129,8 @@
           "output": "3 10 8"
         }
       ],
-      "hint": "## 提示\n\n快速傅里叶变换（FFT）利用复数单位根将多项式乘法从 \\(O(nm)\\) 优化到 \\(O(N \\log N)``` 其中 \\(N\\) 是 2 的幂次且 \\(N \\geq n + m - 1\\)。\n\nFFT 的核心思想：\n1. 将多项式从系数表示转换为点值表示（DFT，离散傅里叶变换）。\n2. 在点值表示下逐点相乘（\\(O(N)\\)）。\n3. 将结果从点值表示转换回系数表示（IDFT，逆变换）。\n\n也可以使用 NTT（数论变换）避免浮点误差。"
+      "hint": "## 提示\n\n快速傅里叶变换（FFT）利用复数单位根将多项式乘法从 \\(O(nm)\\) 优化到 \\(O(N \\log N)``` 其中 \\(N\\) 是 2 的幂次且 \\(N \\geq n + m - 1\\)。\n\nFFT 的核心思想：\n1. 将多项式从系数表示转换为点值表示（DFT，离散傅里叶变换）。\n2. 在点值表示下逐点相乘（\\(O(N)\\)）。\n3. 将结果从点值表示转换回系数表示（IDFT，逆变换）。\n\n也可以使用 NTT（数论变换）避免浮点误差。",
+      "isPublic": true
     },
     "1027": {
       "id": 1027,
@@ -1101,7 +1154,8 @@
           "output": "3"
         }
       ],
-      "hint": "## 提示\n\n### 匈牙利算法（Hungarian）\n\n对每个左侧节点，尝试为其寻找增广路：\n1. 对于左侧节点 \\(u\\)，遍历其所有邻接的右侧节点 \\(v\\)。\n2. 如果 \\(v\\) 未被访问（在本轮），标记并尝试匹配：\n   - 如果 \\(v\\) 未匹配，则匹配 \\(u-v\\)。\n   - 否则递归尝试为 \\(v\\) 的匹配节点寻找新的匹配。\n3. 如果找到增广路，匹配数 +1。\n\n时间复杂度 \\(O(n \\cdot e)\\)。\n\n### 最大流解法\n\n二分图匹配可以转化为最大流问题（建立超级源点和超级汇点），使用 Dinic 算法时间复杂度为 \\(O(\\sqrt{n+m} \\cdot e)\\)。"
+      "hint": "## 提示\n\n### 匈牙利算法（Hungarian）\n\n对每个左侧节点，尝试为其寻找增广路：\n1. 对于左侧节点 \\(u\\)，遍历其所有邻接的右侧节点 \\(v\\)。\n2. 如果 \\(v\\) 未被访问（在本轮），标记并尝试匹配：\n   - 如果 \\(v\\) 未匹配，则匹配 \\(u-v\\)。\n   - 否则递归尝试为 \\(v\\) 的匹配节点寻找新的匹配。\n3. 如果找到增广路，匹配数 +1。\n\n时间复杂度 \\(O(n \\cdot e)\\)。\n\n### 最大流解法\n\n二分图匹配可以转化为最大流问题（建立超级源点和超级汇点），使用 Dinic 算法时间复杂度为 \\(O(\\sqrt{n+m} \\cdot e)\\)。",
+      "isPublic": true
     }
   }
 }

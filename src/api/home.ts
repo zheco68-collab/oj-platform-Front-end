@@ -48,6 +48,19 @@ export async function fetchAnnouncements(): Promise<ApiResponse<Announcement[]>>
   }
 }
 
+/** 获取单条公告详情 */
+export async function fetchAnnouncementDetail(
+  id: number,
+): Promise<ApiResponse<Announcement | null>> {
+  await delay(100 + Math.random() * 200)
+  const ann = mockAnnouncements.find((a) => a.id === id) ?? null
+  return {
+    code: ann ? 200 : 404,
+    message: ann ? 'ok' : 'not found',
+    data: ann,
+  }
+}
+
 /** 获取最新题解列表 */
 export async function fetchHomeSolutions(limit = 10): Promise<ApiResponse<SolutionSummary[]>> {
   await delay()

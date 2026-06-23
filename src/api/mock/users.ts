@@ -131,3 +131,8 @@ export function mockResolveToken(token: string): User | undefined {
 export function mockRevokeToken(token: string): void {
   tokenUserMap.delete(token)
 }
+
+/** 获取可变用户列表（供 Admin API 使用） */
+export function getMutableUsers(): User[] {
+  return users
+}

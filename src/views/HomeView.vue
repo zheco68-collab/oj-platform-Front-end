@@ -233,6 +233,7 @@ onUnmounted(stopBannerAutoPlay)
               v-for="ann in announcements"
               :key="ann.id"
               class="announcement-item"
+              @click="router.push(`/announcement/${ann.id}`)"
             >
               <div class="announcement-title-row">
                 <NTag

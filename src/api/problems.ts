@@ -27,6 +27,9 @@ export async function fetchProblems(
 
   let filtered = [...mockProblems]
 
+  // 仅显示已公开的题目（非管理员视角下过滤私有题）
+  filtered = filtered.filter((p) => p.isPublic !== false)
+
   const { page, size, keyword, difficulty, tags, source, sortField, sortOrder } = params
 
   // 关键词过滤（模糊匹配标题）
@@ -114,7 +117,7 @@ export async function fetchProblemDetail(
   await delay()
 
   const detail = mockProblemDetailMap[id]
-  if (!detail) {
+  if (!detail || detail.isPublic === false) {
     return {
       code: 404,
       message: 'Problem not found',

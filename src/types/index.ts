@@ -77,6 +77,7 @@ export interface Problem {
   memoryLimit: number  // MB
   acceptedCount: number
   submissionCount: number
+  isPublic: boolean    // 是否公开（放入题库）
   status?: 'AC' | 'ATTEMPTED' | 'NONE'  // 当前用户的做题状态
 }
 
@@ -93,6 +94,7 @@ export interface ProblemDetail {
   outputFormat: string   // Markdown
   samples: ProblemSample[]
   hint: string           // Markdown
+  isPublic: boolean
   acceptedCount: number
   submissionCount: number
 }
