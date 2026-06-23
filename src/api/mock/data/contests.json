@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "name": "2026 年度夏季算法竞赛",
+    "category": "OFFICIAL",
+    "type": "IOI",
+    "status": "UPCOMING",
+    "rated": true,
+    "startTime": "2026-06-26T06:00:00Z",
+    "endTime": "2026-06-30T06:00:00Z",
+    "organizer": "OJ 官方"
+  },
+  {
+    "id": 2,
+    "name": "周赛 #56 — 动态规划专场",
+    "category": "PUBLIC",
+    "type": "ICPC",
+    "status": "UPCOMING",
+    "rated": true,
+    "startTime": "2026-06-24T06:00:00Z",
+    "endTime": "2026-06-24T08:00:00Z",
+    "organizer": "Admin"
+  },
+  {
+    "id": 3,
+    "name": "周赛 #55 — 图论与搜索",
+    "category": "PUBLIC",
+    "type": "ICPC",
+    "status": "RUNNING",
+    "rated": true,
+    "startTime": "2026-06-23T13:00:00Z",
+    "endTime": "2026-06-23T15:00:00Z",
+    "organizer": "Admin"
+  },
+  {
+    "id": 4,
+    "name": "新手练习赛 #12",
+    "category": "TEAM",
+    "type": "OI",
+    "status": "ENDED",
+    "rated": false,
+    "startTime": "2026-06-15T10:00:00Z",
+    "endTime": "2026-06-16T10:00:00Z",
+    "organizer": "OJ 训练营"
+  },
+  {
+    "id": 5,
+    "name": "月赛 #5 — 算法综合挑战",
+    "category": "OFFICIAL",
+    "type": "IOI",
+    "status": "ENDED",
+    "rated": true,
+    "startTime": "2026-06-01T09:00:00Z",
+    "endTime": "2026-06-01T15:00:00Z",
+    "organizer": "OJ 官方"
+  },
+  {
+    "id": 6,
+    "name": "Codeforces 模拟赛 Round #3",
+    "category": "PUBLIC",
+    "type": "ICPC",
+    "status": "ENDED",
+    "rated": true,
+    "startTime": "2026-05-28T14:00:00Z",
+    "endTime": "2026-05-28T17:00:00Z",
+    "organizer": "Codeforces 中文社区"
+  },
+  {
+    "id": 7,
+    "name": "ACM 校赛热身赛",
+    "category": "TEAM",
+    "type": "ICPC",
+    "status": "ENDED",
+    "rated": false,
+    "startTime": "2026-05-20T08:00:00Z",
+    "endTime": "2026-05-20T12:00:00Z",
+    "organizer": "某高校 ACM 队"
+  },
+  {
+    "id": 8,
+    "name": "五一劳动节特别赛",
+    "category": "OFFICIAL",
+    "type": "OI",
+    "status": "ENDED",
+    "rated": true,
+    "startTime": "2026-05-01T10:00:00Z",
+    "endTime": "2026-05-03T10:00:00Z",
+    "organizer": "OJ 官方"
+  }
+]

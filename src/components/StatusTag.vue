@@ -26,7 +26,7 @@ const colorMap: Record<string, TagType> = {
   ENDED: 'default',
 }
 
-const labelMap: Record<string, string> = {
+const judgeLabelMap: Record<string, string> = {
   PENDING: 'Pending',
   RUNNING: 'Running',
   AC: 'AC',
@@ -36,16 +36,36 @@ const labelMap: Record<string, string> = {
   RE: 'RE',
   CE: 'CE',
   SE: 'SE',
+}
+
+const contestLabelMap: Record<string, string> = {
   UPCOMING: '未开始',
+  RUNNING: '进行中',
   ENDED: '已结束',
 }
 
-const label = computed(() => labelMap[props.status] || props.status)
-const color = computed(() => colorMap[props.status] || 'default')
+const label = computed(() => {
+  if (props.type === 'contest') {
+    return contestLabelMap[props.status] || props.status
+  }
+  return judgeLabelMap[props.status] || props.status
+})
+const contestColorMap: Record<string, TagType> = {
+  UPCOMING: 'warning',
+  RUNNING: 'success',
+  ENDED: 'default',
+}
+
+const computedColor = computed(() => {
+  if (props.type === 'contest') {
+    return contestColorMap[props.status] || 'default'
+  }
+  return colorMap[props.status] || 'default'
+})
 </script>
 
 <template>
-  <NTag :type="color" size="small" round>
+  <NTag :type="computedColor" size="small" round>
     {{ label }}
   </NTag>
 </template>

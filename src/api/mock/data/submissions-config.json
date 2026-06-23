@@ -1,0 +1,6 @@
+{
+  "stateSequence": [
+    { "state": "PENDING", "polls": 1 },
+    { "state": "RUNNING", "polls": 2 }
+  ]
+}

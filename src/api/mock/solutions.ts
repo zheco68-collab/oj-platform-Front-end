@@ -1,4 +1,4 @@
 import type { SolutionSummary } from '../../types'
+import solutionsData from './data/solutions.json'
 
-// TODO: 填充 Mock 数据
-export const mockSolutions: SolutionSummary[] = []
+export const mockSolutions: SolutionSummary[] = solutionsData as SolutionSummary[]

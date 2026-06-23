@@ -1,19 +1,21 @@
 <script setup lang="ts">
-import { NLayout, NLayoutContent } from 'naive-ui'
+import { NLayout, NLayoutContent, NMessageProvider } from 'naive-ui'
 import GlobalHeader from './components/GlobalHeader.vue'
 import GlobalFooter from './components/GlobalFooter.vue'
 </script>
 
 <template>
-  <NLayout class="app-layout">
-    <GlobalHeader />
-    <NLayoutContent class="app-content">
-      <div class="container">
-        <router-view />
-      </div>
-    </NLayoutContent>
-    <GlobalFooter />
-  </NLayout>
+  <NMessageProvider>
+    <NLayout class="app-layout">
+      <GlobalHeader />
+      <NLayoutContent class="app-content">
+        <div class="container">
+          <router-view />
+        </div>
+      </NLayoutContent>
+      <GlobalFooter />
+    </NLayout>
+  </NMessageProvider>
 </template>
 
 <style>

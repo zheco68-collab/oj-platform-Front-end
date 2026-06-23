@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "title": "A + B 问题的 10 种写法 — 从入门到炫技",
+    "author": { "id": 1, "username": "AlgorithmMaster", "avatarUrl": "" },
+    "problemId": 1001,
+    "problemTitle": "A + B 问题",
+    "createdAt": "2026-06-23T06:00:00Z",
+    "likeCount": 128,
+    "summary": "从最基础的 cin/cout 到汇编内联，带你领略 A+B 的十种写法。本文适合刚接触编程的初学者，也适合想要炫技的老手。每种写法都附有详细的注释说明和性能分析。"
+  },
+  {
+    "id": 2,
+    "title": "动态规划入门：从斐波那契到背包问题",
+    "author": { "id": 2, "username": "DP_King", "avatarUrl": "" },
+    "problemId": 1002,
+    "problemTitle": "斐波那契数列",
+    "createdAt": "2026-06-23T03:00:00Z",
+    "likeCount": 95,
+    "summary": "动态规划是算法竞赛中的重要思想。本文以斐波那契数列为引，逐步讲解 DP 的核心概念：状态定义、转移方程、最优子结构和重叠子问题，并扩展到 0-1 背包问题。"
+  },
+  {
+    "id": 3,
+    "title": "线段树从入门到入土 — 区间操作全解析",
+    "author": { "id": 3, "username": "TreeLover", "avatarUrl": "" },
+    "problemId": 1016,
+    "problemTitle": "线段树",
+    "createdAt": "2026-06-23T00:00:00Z",
+    "likeCount": 76,
+    "summary": "本文详细讲解线段树的数据结构实现，包括建树、单点修改、区间查询，以及懒标记（Lazy Propagation）在区间修改中的应用。附带大量图示。"
+  },
+  {
+    "id": 4,
+    "title": "KMP 算法图解 — 为什么 next 数组这样求？",
+    "author": { "id": 4, "username": "StringMaster", "avatarUrl": "" },
+    "problemId": 1015,
+    "problemTitle": "KMP 字符串匹配",
+    "createdAt": "2026-06-22T20:00:00Z",
+    "likeCount": 64,
+    "summary": "KMP 算法的 next 数组一直是初学者的难点。本文用图解的方式一步步推导 next 数组的计算过程，让你彻底理解\"前缀函数\"的本质。"
+  },
+  {
+    "id": 5,
+    "title": "二分查找的边界处理 — 再也不怕死循环",
+    "author": { "id": 5, "username": "BinarySearch", "avatarUrl": "" },
+    "problemId": 1007,
+    "problemTitle": "二分查找",
+    "createdAt": "2026-06-22T14:00:00Z",
+    "likeCount": 58,
+    "summary": "二分查找看似简单，边界处理却容易出错。本文总结了四种常见的二分模板（左闭右开、左闭右闭、找第一个大于等于、找最后一个小于等于），附口诀记忆。"
+  },
+  {
+    "id": 6,
+    "title": "最短路径四大算法对比 — Dijkstra / Bellman-Ford / SPFA / Floyd",
+    "author": { "id": 6, "username": "GraphTheory", "avatarUrl": "" },
+    "problemId": 1010,
+    "problemTitle": "最短路径",
+    "createdAt": "2026-06-22T08:00:00Z",
+    "likeCount": 112,
+    "summary": "一文搞懂四种最短路径算法的原理、实现、复杂度分析和适用场景。包含稠密图、稀疏图、负权边等各种情况的对比测试。"
+  },
+  {
+    "id": 7,
+    "title": "并查集优化技巧：路径压缩 + 按秩合并",
+    "author": { "id": 7, "username": "DSU_Fan", "avatarUrl": "" },
+    "problemId": 1013,
+    "problemTitle": "并查集",
+    "createdAt": "2026-06-22T02:00:00Z",
+    "likeCount": 43,
+    "summary": "并查集是一个看似简单但充满优化技巧的数据结构。本文讲解路径压缩和按秩合并两种优化，并分析均摊时间复杂度 O(alpha(n)) 的来源。"
+  },
+  {
+    "id": 8,
+    "title": "最小生成树：Kruskal vs Prim — 什么时候用哪个？",
+    "author": { "id": 8, "username": "MST_Explorer", "avatarUrl": "" },
+    "problemId": 1017,
+    "problemTitle": "最小生成树",
+    "createdAt": "2026-06-21T20:00:00Z",
+    "likeCount": 37,
+    "summary": "Kruskal 和 Prim 都是求最小生成树的经典算法。本文对比两种算法在稠密图和稀疏图中的性能差异，帮助你在不同场景下做出正确选择。"
+  },
+  {
+    "id": 9,
+    "title": "网络流入门：从最大流到最小割",
+    "author": { "id": 9, "username": "FlowGod", "avatarUrl": "" },
+    "problemId": 1020,
+    "problemTitle": "网络流",
+    "createdAt": "2026-06-21T08:00:00Z",
+    "likeCount": 89,
+    "summary": "网络流是图论中的高级话题。本文从 Ford-Fulkerson 方法到 Dinic 算法逐步深入，并结合最小割定理讲解网络流建模的基本思想。"
+  },
+  {
+    "id": 10,
+    "title": "0-1 背包问题的空间优化：从二维到一维",
+    "author": { "id": 10, "username": "PackSolver", "avatarUrl": "" },
+    "problemId": 1018,
+    "problemTitle": "0-1 背包问题",
+    "createdAt": "2026-06-21T02:00:00Z",
+    "likeCount": 52,
+    "summary": "0-1 背包的标准解法是二维 DP 数组，但可以通过逆序枚举将空间优化到一维。本文通过图解说明为什么需要逆序以及如何避免常见的错误。"
+  }
+]

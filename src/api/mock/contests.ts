@@ -1,4 +1,4 @@
 import type { Contest } from '../../types'
+import contestsData from './data/contests.json'
 
-// TODO: 填充 Mock 数据
-export const mockContests: Contest[] = []
+export const mockContests: Contest[] = contestsData as Contest[]
